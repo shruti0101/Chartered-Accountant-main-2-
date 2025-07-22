@@ -24,6 +24,7 @@
     "install": "^0.13.0",
     "jodit-react": "^5.2.19",
     "jsonwebtoken": "^9.0.2",
+    "jwt-decode": "^4.0.0",
     "lucide-react": "^0.518.0",
     "mongoose": "^8.16.4",
     "motion": "^12.19.2",

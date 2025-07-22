@@ -49,6 +49,15 @@ const Sidebar = () => {
             <Image src={Data.add_icon} alt="add publication icon" width={20} />
             Add Publications
           </Link>
+
+
+            <Link
+            href="/admin/pdflist"
+            className="mt-7 flex items-center border border-black font-medium gap-3 px-3 py-2 bg-white shadow-[-7px_7px_0px_#000000]"
+          >
+            <Image src={Data.blog_icon} alt="blog icon" width={20} />
+            PDF Lists
+          </Link>
         </div>
 
 

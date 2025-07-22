@@ -13,7 +13,7 @@ export async function POST(req) {
   if (!file || !title || !description) {
     return new Response("Missing fields", { status: 400 });
   }
-  
+
 
   const bytes = await file.arrayBuffer();
   const buffer = Buffer.from(bytes);
@@ -37,6 +37,12 @@ export async function POST(req) {
     status: 201,
   });
 }
+
+
+
+// api endpoint for deletion
+
+
 
 export async function GET() {
   await connect();

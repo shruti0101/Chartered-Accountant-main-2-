@@ -15,9 +15,9 @@ export default function Layout({ children }) {
         <div className="flex items-center justify-between w-full py-3 max-h-[60px] px-12 border-b border-black">
 
           {/* Left: Admin Panel Text */}
-          <Link href="/admin" className="text-blue-800 text-xl font-bold">
+          <div  className="text-blue-800 text-xl font-bold">
             Admin Panel
-          </Link>
+          </div>
 
           {/* Right: Profile Image */}
           <Image

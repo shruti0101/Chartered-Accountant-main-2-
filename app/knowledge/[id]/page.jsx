@@ -3,15 +3,16 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import axios from 'axios';
 import { useParams } from 'next/navigation';
+import DOMPurify from 'dompurify';
 
 const Page = () => {
   const [data, setData] = useState(null);
-  const params = useParams(); // ✅ Correct way to access params in client components
+  const params = useParams();
 
   const fetchBlog = async () => {
     try {
       const response = await axios.get('/api/blog', {
-        params: { id: params.id }, // id from dynamic route
+        params: { id: params.id },
       });
 
       setData(response.data);
@@ -41,9 +42,13 @@ const Page = () => {
               width={800}
               height={300}
             />
-            <p className="text-lg leading-relaxed text-gray-700">
-              {data.description}
-            </p>
+
+            <div
+              className="text-lg leading-relaxed text-gray-700 prose max-w-none"
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(data.description),
+              }}
+            />
           </>
         )}
       </div>

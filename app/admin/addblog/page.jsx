@@ -1,18 +1,23 @@
 "use client";
 import Image from "next/image";
-import { useState } from "react";
+import { useState,useRef } from "react";
 import { Data } from "@/Data/Data";
 import React from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
-const page = () => {
+import JoditEditor from 'jodit-react';
+
+const Page = () => {
   const [image, setImage] = useState(false);
-  const [data, setData] = useState({
-    title: "",
-    description: "",
-  });
-  const [loading, setLoading] = useState(false); // ✅ Loading state
+  const [data, setData] = useState({ title: "" });
+  const [description, setDescription] = useState("");
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
+
+
+const editor = useRef(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,40 +26,35 @@ const page = () => {
 
   const submitbutton = async (e) => {
     e.preventDefault();
-    setLoading(true); // ✅ Start loading
+    setLoading(true);
 
     const formData = new FormData();
     formData.append("image", image);
     formData.append("title", data.title);
-    formData.append("description", data.description);
+    formData.append("description", description);
 
     try {
       const res = await axios.post("/api/blog", formData);
       if (res.data.success) {
         toast.success(res.data.message);
         setImage(false);
-        setData({
-          title: "",
-          description: "",
-        });
+        setData({ title: "" });
+        setDescription("");
       } else {
         toast.error("Error in uploading blog");
       }
     } catch (err) {
       toast.error("Something went wrong");
     } finally {
-      setLoading(false); // ✅ Stop loading
+      setLoading(false);
     }
   };
 
   return (
-    <>
-      <form
-        onSubmit={submitbutton}
-        className="pt-5 px-5 sm:pt-12 sm:pl-16 mb-10"
-      >
+    <div className="pt-5 px-5 sm:pt-12 sm:pl-16 mb-10">
+      {/* Blog Upload Form */}
+      <form onSubmit={submitbutton}>
         <p className="text-xl">Upload Thumbnail</p>
-
         <label htmlFor="image">
           <Image
             className="mt-4"
@@ -64,7 +64,6 @@ const page = () => {
             height={200}
           />
         </label>
-
         <input
           onChange={(e) => setImage(e.target.files[0])}
           type="file"
@@ -73,27 +72,26 @@ const page = () => {
           required
         />
 
-        <p className="text-xl mt-4"> Title</p>
+        <p className="text-xl mt-4">Title</p>
         <input
           onChange={handleChange}
           name="title"
           value={data.title}
           className="w-full sm:w-[500px] mt-4 px-4 py-3 border"
           type="text"
-          placeholder="type here"
+          placeholder="Type here"
           required
         />
 
-        <p className="text-xl mt-4"> Description</p>
-        <textarea
-          name="description"
-          onChange={handleChange}
-          value={data.description}
-          className="w-full sm:w-[500px] mt-4 px-4 py-3 border"
-          placeholder="Write Content Here"
-          rows={6}
-          required
-        />
+        <p className="text-xl mt-6 font-semibold">Description</p>
+     
+
+      <JoditEditor 
+  ref={editor}
+  value={description}
+  onChange={newContent => setDescription(newContent)}
+/>
+
 
         <br />
         <button
@@ -101,7 +99,7 @@ const page = () => {
             loading ? "opacity-70 cursor-not-allowed" : ""
           }`}
           type="submit"
-          disabled={loading} // ✅ Prevent multiple clicks
+          disabled={loading}
         >
           {loading ? (
             <>
@@ -132,8 +130,8 @@ const page = () => {
           )}
         </button>
       </form>
-    </>
+    </div>
   );
 };
 
-export default page;
+export default Page;

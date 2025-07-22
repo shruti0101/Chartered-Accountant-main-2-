@@ -16,7 +16,7 @@ const LoginPage = () => {
     const submitHandler = async () =>{
         try {
             const res = await axios.post("/api/users/login", user);
-            router.push("/admin");
+            router.push("/admin/addblog");
             console.log(res);
             toast.success(res.data.message)
         } catch (error) {

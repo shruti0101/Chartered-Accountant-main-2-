@@ -1,11 +1,13 @@
-// app/layout.tsx or layout.js
+// app/layout.jsx or layout.tsx
+'use client';
+
 import { Inter } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/Navbar/Navbar';
 import Footer from "@/components/Footer/Footer";
-import { Toaster } from 'react-hot-toast'; // ✅ Add this import
+import { Toaster } from 'react-hot-toast';
 
-// Load the font
+
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
@@ -15,10 +17,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${inter.variable} antialiased`}>
-        <Toaster position="top-right" reverseOrder={false} /> {/* ✅ This works now */}
-        <Navbar />
-        {children}
-        <Footer />
+ 
+          <Toaster position="top-right" reverseOrder={false} />
+          <Navbar />
+          {children}
+          <Footer />
+     
       </body>
     </html>
   );

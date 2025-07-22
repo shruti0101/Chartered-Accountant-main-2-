@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { writeFile } from "fs/promises";
 import path from "path";
 import { connect } from "@/Database/Db";
-
+const fs = require('fs')
 import Blog from "@/models/blog";
 
 const loadDB = async () => {
@@ -32,7 +32,41 @@ export async function GET(request) {
 }
 
 
+// api endpoint for deleting the blog
 
+export async function DELETE(request) {
+  const id = request.nextUrl.searchParams.get("id");
+
+  if (!id) {
+    return NextResponse.json({ error: "Missing blog ID" }, { status: 400 });
+  }
+
+  try {
+    const blog = await Blog.findById(id);
+
+    if (!blog) {
+      return NextResponse.json({ error: "Blog not found" }, { status: 404 });
+    }
+
+    // ✅ Construct correct file path
+    const imagePath = `public/blog/${blog.image}`; // No space!
+
+    // ✅ Check if file exists & delete
+    try {
+      await fs.unlink(imagePath); // throws if file not found
+    } catch (err) {
+      console.warn("Image file not found or couldn't delete:", imagePath);
+    }
+
+    await Blog.findByIdAndDelete(id);
+
+    return NextResponse.json({ message: "Blog deleted successfully" }, { status: 200 });
+
+  } catch (err) {
+    console.error("DELETE error:", err);
+    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
+  }
+}
 
 
 

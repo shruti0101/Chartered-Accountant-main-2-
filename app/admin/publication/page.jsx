@@ -19,13 +19,9 @@ export default function UploadPublication() {
     try {
       await axios.post("/api/publications", data);
       toast.success("Uploaded PDF successfully!");
-
-      // ✅ Clear all fields
       setTitle("");
       setDescription("");
       setFile(null);
-
-     
       document.getElementById("pdf-upload").value = "";
     } catch (error) {
       toast.error("Failed to upload PDF");
@@ -34,45 +30,72 @@ export default function UploadPublication() {
   };
 
   return (
-    <>
-      <section className="text-3xl font-bold text-center p-5">
-        Upload Your PDFs Here..
-      </section>
-      <form
-        onSubmit={handleSubmit}
-        className="max-w-xl bg-gray-100  mt-10 mx-auto p-6 space-y-4 border rounded"
-      >
-        <input
-          type="text"
-          placeholder="Title"
-          className="w-full border p-2"
-          value={title} 
-          onChange={(e) => setTitle(e.target.value)}
-          required
-        />
+    <div className="px-4 sm:px-6 lg:px-8 py-10">
+      <div className="max-w-2xl mx-auto bg-white shadow-lg rounded-lg p-6 sm:p-10 border border-gray-200">
+        <h2 className="text-xl sm:text-2xl font-bold mb-6 text-center">
+          Upload Your PDFs Here
+        </h2>
 
-        <textarea
-          placeholder="Description"
-          className="w-full border p-2"
-          value={description} 
-          onChange={(e) => setDescription(e.target.value)}
-          required
-        />
-        <input
-          id="pdf-upload"
-          type="file"
-          accept="application/pdf"
-          onChange={(e) => setFile(e.target.files[0])}
-          required
-        />
+        <form onSubmit={handleSubmit} className="space-y-6">
+          {/* Title Input */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Title
+            </label>
+            <input
+              type="text"
+              placeholder="Enter PDF title"
+              className="w-full border rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              required
+            />
+          </div>
 
-        <button
-          type="submit"
-          className="bg-blue-500 text-white px-4 py-2 rounded"
-        >
-          Upload PDF
-        </button>
-      </form>
-    </>
+          {/* Description Input */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              Description
+            </label>
+            <textarea
+              placeholder="Enter PDF description"
+              rows={4}
+              className="w-full border rounded-md px-4 py-2 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              required
+            />
+          </div>
+
+          {/* File Upload */}
+          <div>
+            <label
+              htmlFor="pdf-upload"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
+              PDF File
+            </label>
+            <input
+              id="pdf-upload"
+              type="file"
+              accept="application/pdf"
+              className="w-full text-sm file:mr-4 file:py-2 file:px-4 file:border file:rounded file:border-gray-300 file:text-sm file:bg-white file:text-gray-700 hover:file:bg-gray-100"
+              onChange={(e) => setFile(e.target.files[0])}
+              required
+            />
+          </div>
+
+          {/* Submit Button */}
+          <div>
+            <button
+              type="submit"
+              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 rounded-md transition"
+            >
+              Upload PDF
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
   );
 }

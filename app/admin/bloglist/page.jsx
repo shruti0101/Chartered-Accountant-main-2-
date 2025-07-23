@@ -13,18 +13,15 @@ const Page = () => {
     setBlogs(res.data.blogs);
   };
 
-
-  const deleteBlog = async(mongoId)=>{
-const res= await axios.delete("/api/blog", {
-  params:{
-id:mongoId
-  }
-});
-toast.success(res.data.message);
-
-fetchData();
-  }
-
+  const deleteBlog = async (mongoId) => {
+    const res = await axios.delete("/api/blog", {
+      params: {
+        id: mongoId,
+      },
+    });
+    toast.success(res.data.message);
+    fetchData();
+  };
 
   useEffect(() => {
     fetchData();
@@ -32,27 +29,61 @@ fetchData();
 
   return (
     <div className="flex-1 pt-6 px-4 sm:pt-12 sm:px-16 bg-gray-50 min-h-screen">
-      {/* Page Title */}
       <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 border-b border-gray-300 pb-3">
         All Blogs
       </h1>
 
-      {/* Table Container */}
-      <div className="relative h-[85vh] max-w-7xl overflow-y-auto mt-6 rounded-lg shadow-md bg-white border border-gray-200 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100">
-        <table className="w-full text-gray-600">
-          <thead className="text-sm font-semibold text-gray-700 uppercase bg-gray-100 sticky top-0 z-10 shadow-sm">
-            <tr className="grid grid-cols-3  text-center sm:table-row">
-              <th className="px-6 py-4 text-left">Blog Title</th>
-              <th className="px-6 py-4 text-left">Date</th>
-              <th className=" px-3 py-4 text-left">Action</th>
+      {/* TABLE VIEW FOR DESKTOP */}
+      <div className="hidden sm:block mt-6 overflow-x-auto border border-gray-200 rounded-lg bg-white shadow-md">
+        <table className="min-w-full text-sm text-left text-gray-600">
+          <thead className="text-xs font-semibold text-gray-700 uppercase bg-gray-100">
+            <tr>
+              <th className="px-6 py-4">Blog Title</th>
+              <th className="px-6 py-4">Date</th>
+              <th className="px-6 py-4">Action</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200">
-            {blogs.map((item, index) => {
-              return <BlogTable key={index} deleteBlog={deleteBlog}  mongoId={item._id} title={item.title} date={item.date}/>;
-            })}
+            {blogs.map((item, index) => (
+              <BlogTable
+                key={index}
+                deleteBlog={deleteBlog}
+                mongoId={item._id}
+                title={item.title}
+                date={item.date}
+              />
+            ))}
           </tbody>
         </table>
+      </div>
+
+      {/* CARD VIEW FOR MOBILE */}
+      <div className="sm:hidden mt-6 space-y-4">
+        {blogs.map((item, index) => (
+          <div
+            key={index}
+            className="border border-gray-200 rounded-lg bg-white shadow-sm p-4 space-y-2"
+          >
+            <div className="text-sm text-gray-700 font-semibold">
+              Blog Title:
+            </div>
+            <div className="text-base text-gray-900 break-words">
+              {item.title}
+            </div>
+
+            <div className="text-sm text-gray-700 font-semibold mt-2">Date:</div>
+            <div className="text-base text-gray-900">{item.date}</div>
+
+            <div className="mt-4">
+              <button
+                onClick={() => deleteBlog(item._id)}
+                className="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 text-sm"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

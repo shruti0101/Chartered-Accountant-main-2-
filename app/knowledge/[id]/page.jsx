@@ -14,7 +14,6 @@ const Page = () => {
       const response = await axios.get('/api/blog', {
         params: { id: params.id },
       });
-
       setData(response.data);
     } catch (err) {
       console.error("Error fetching blog:", err);
@@ -28,23 +27,28 @@ const Page = () => {
   }, [params.id]);
 
   return (
-    <section className="bg-gray-100 min-h-screen">
-      <div className="max-w-4xl mx-auto px-4 py-8">
+    <section className="bg-gray-50 min-h-screen py-10 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto">
         {!data ? (
           <div className="text-center text-lg text-gray-500">Loading...</div>
         ) : (
           <>
-            <h1 className="text-4xl font-bold mb-10 text-center">{data.title}</h1>
-            <Image
-              src={data.image}
-              alt="Blog Thumbnail"
-              className="rounded-lg border-4 border-white mb-6 mx-auto shadow-2xl"
-              width={800}
-              height={300}
-            />
+            <h1 className="text-3xl sm:text-4xl font-bold mb-6 text-center text-[#1C398E] leading-snug">
+              {data.title}
+            </h1>
+
+            <div className="w-full overflow-hidden rounded-lg shadow-xl mb-8">
+              <Image
+                src={data.image}
+                alt="Blog Thumbnail"
+                width={800}
+                height={400}
+                className="w-full object-cover max-h-[450px]"
+              />
+            </div>
 
             <div
-              className="text-lg leading-relaxed text-gray-700 prose max-w-none"
+              className="prose prose-lg max-w-none text-gray-700 prose-img:rounded-md prose-a:text-blue-600"
               dangerouslySetInnerHTML={{
                 __html: DOMPurify.sanitize(data.description),
               }}

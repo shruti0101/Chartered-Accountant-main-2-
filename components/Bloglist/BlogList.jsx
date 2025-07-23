@@ -6,7 +6,7 @@ import BlogItem from "../Blogitem/BlogItem";
 
 const BlogList = () => {
   const [blogs, setBlogs] = useState([]);
-  const [loading, setLoading] = useState(true); // 👈 Added loading state
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchBlogs = async () => {
@@ -16,7 +16,7 @@ const BlogList = () => {
       } catch (error) {
         console.error("Error fetching blog data:", error);
       } finally {
-        setLoading(false); // 👈 Hide loader after data fetched or error
+        setLoading(false);
       }
     };
 
@@ -24,14 +24,13 @@ const BlogList = () => {
   }, []);
 
   return (
-    <div className="min-h-[300px] mb-16 xl:mx-24">
+    <div className="min-h-[300px] mb-20 px-4 sm:px-6 xl:px-24">
       {loading ? (
-        // 👇 Simple Tailwind spinner
         <div className="flex justify-center items-center py-20">
-          <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-blue-600 border-opacity-40"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-4 border-blue-500 border-t-transparent"></div>
         </div>
       ) : blogs.length > 0 ? (
-        <div className="flex flex-wrap justify-around gap-1 gap-y-10">
+        <div className="grid gap-8 sm:gap-10 md:gap-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 place-items-center">
           {blogs.map((item, index) => (
             <BlogItem
               key={index}

@@ -23,7 +23,8 @@ export async function GET(request) {
   }
   else{
 
-      const blogs = await Blog.find({});
+   const blogs = await Blog.find({}).sort({ date: -1 }); // Sort by date DESC
+
 
   return NextResponse.json({blogs});
 

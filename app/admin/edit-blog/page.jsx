@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -10,6 +10,14 @@ import dynamic from "next/dynamic";
 const JoditEditor = dynamic(() => import("jodit-react"), { ssr: false });
 
 export default function EditBlogPage() {
+  return (
+    <Suspense fallback={<div className="p-4 text-gray-500">Loading...</div>}>
+      <EditBlogContent />
+    </Suspense>
+  );
+}
+
+function EditBlogContent() {
   const searchParams = useSearchParams();
   const blogId = searchParams.get("id");
   const router = useRouter();
@@ -21,7 +29,6 @@ export default function EditBlogPage() {
   const [loading, setLoading] = useState(false);
   const editor = useRef(null);
 
-  // Fetch blog details
   useEffect(() => {
     if (blogId) {
       axios.get(`/api/blog?id=${blogId}`).then((res) => {
@@ -100,7 +107,6 @@ export default function EditBlogPage() {
 
         <button
           type="submit"
-       
           disabled={loading}
           className={`px-6 py-2 bg-blue-600 text-white mb-6 rounded hover:bg-blue-700 ${
             loading ? "opacity-70 cursor-not-allowed" : ""

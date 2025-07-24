@@ -16,6 +16,7 @@ const PublicationList = () => {
       } finally {
         setLoading(false);
       }
+      
     };
     fetchPublications();
   }, []);

@@ -118,7 +118,7 @@ const benefits = [
     {
       icon: FaIdCard,
       title: "Identity Proof",
-      desc: "PAN card of all directors / partners.",
+      desc: "PAN card of all Proposed Directors.",
     },
     {
       icon: FaMapMarkedAlt,
@@ -133,7 +133,7 @@ const benefits = [
     {
       icon: FaUniversity,
       title: "Photographs",
-      desc: "Passport‑size photos of all directors / partners.",
+      desc: "Passport‑size photos of all Proposed Directors.",
     },
     {
       icon: FaUserShield,
@@ -276,7 +276,7 @@ const description = "Register your company seamlessly with Chintan Agrawal & Co.
 
         <div>
       <img
-        src="/navservices/company.png"
+        src="/navservices/comp.png"
         alt="company registration India"
         className="mx-auto h-auto object-contain "
         loading="lazy"

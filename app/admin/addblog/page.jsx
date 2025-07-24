@@ -1,13 +1,12 @@
 "use client";
 import Image from "next/image";
-import { useState,useRef } from "react";
+import { useState, useRef } from "react";
 import { Data } from "@/Data/Data";
 import React from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
-
-import JoditEditor from 'jodit-react';
+import JoditEditor from "jodit-react";
 
 const Page = () => {
   const [image, setImage] = useState(false);
@@ -16,8 +15,7 @@ const Page = () => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-
-const editor = useRef(null);
+  const editor = useRef(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -84,14 +82,12 @@ const editor = useRef(null);
         />
 
         <p className="text-xl mt-6 font-semibold">Description</p>
-     
 
-      <JoditEditor 
-  ref={editor}
-  value={description}
-  onChange={newContent => setDescription(newContent)}
-/>
-
+        <JoditEditor
+          ref={editor}
+          value={description}
+          onChange={(newContent) => setDescription(newContent)}
+        />
 
         <br />
         <button
@@ -130,6 +126,12 @@ const editor = useRef(null);
           )}
         </button>
       </form>
+
+      {/* Blog Preview (so you can see lists render properly) */}
+      <div
+        className="prose max-w-none mt-12"
+        dangerouslySetInnerHTML={{ __html: description }}
+      />
     </div>
   );
 };

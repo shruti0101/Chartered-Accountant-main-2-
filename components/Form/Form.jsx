@@ -142,7 +142,7 @@ export default function ContactSection() {
         {/* Right Form */}
         <form
           ref={formRef}
-          action="https://formsubmit.co/agarwalchintan27@gmail.com"
+          action="https://formsubmit.co/info@cachintanagrawal.com"
           method="POST"
           className="bg-blue-600 p-8 rounded-lg space-y-4"
           onSubmit={handleSubmit}

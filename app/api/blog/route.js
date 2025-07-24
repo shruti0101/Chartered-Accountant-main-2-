@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { writeFile } from "fs/promises";
 import path from "path";
 import { connect } from "@/Database/Db";
-const fs = require('fs')
+const fs = require("fs");
 import Blog from "@/models/blog";
 
 const loadDB = async () => {
@@ -14,27 +14,20 @@ loadDB();
 // api endpoint to get all   blog data
 
 export async function GET(request) {
-
-
   const blogId = request.nextUrl.searchParams.get("id");
   if (blogId) {
     const blog = await Blog.findById(blogId);
-   return NextResponse.json(blog);
+    return NextResponse.json(blog);
+  } else {
+    const blogs = await Blog.find({}).sort({ date: -1 }); // Sort by date DESC
+
+    return NextResponse.json({ blogs });
   }
-  else{
-
-   const blogs = await Blog.find({}).sort({ date: -1 }); // Sort by date DESC
-
-
-  return NextResponse.json({blogs});
-
-  }
-
 }
-
 
 // api endpoint for deleting the blog
 
+// api endpoint for deleting the blog
 export async function DELETE(request) {
   const id = request.nextUrl.searchParams.get("id");
 
@@ -49,27 +42,25 @@ export async function DELETE(request) {
       return NextResponse.json({ error: "Blog not found" }, { status: 404 });
     }
 
-    // ✅ Construct correct file path
-    const imagePath = `public/blog/${blog.image}`; // No space!
+    // Properly resolve the image path
+    const imagePath = path.join(process.cwd(), "public", blog.image.replace(/^\/+/, "")); 
 
-    // ✅ Check if file exists & delete
+    // Delete image if it exists
     try {
-      await fs.unlink(imagePath); // throws if file not found
+      await fs.promises.unlink(imagePath);
+      console.log(`Deleted image: ${imagePath}`);
     } catch (err) {
-      console.warn("Image file not found or couldn't delete:", imagePath);
+      console.warn("Image not found, skipping delete:", imagePath);
     }
 
     await Blog.findByIdAndDelete(id);
 
     return NextResponse.json({ message: "Blog deleted successfully" }, { status: 200 });
-
   } catch (err) {
     console.error("DELETE error:", err);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }
-
-
 
 
 // api endpoint for uploading blog data
@@ -81,7 +72,10 @@ export async function POST(request) {
 
     const image = formData.get("image");
     if (!image || typeof image === "string") {
-      return NextResponse.json({ success: false, message: "No image uploaded" }, { status: 400 });
+      return NextResponse.json(
+        { success: false, message: "No image uploaded" },
+        { status: 400 }
+      );
     }
 
     // Convert uploaded file to buffer
@@ -118,6 +112,9 @@ export async function POST(request) {
     });
   } catch (err) {
     console.error("Error uploading file:", err);
-    return NextResponse.json({ success: false, message: err.message || "Server error" }, { status: 500 });
+    return NextResponse.json(
+      { success: false, message: err.message || "Server error" },
+      { status: 500 }
+    );
   }
 }

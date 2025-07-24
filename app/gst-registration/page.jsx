@@ -130,38 +130,51 @@ const benefits = [
     },
   ];
 
-  const faqs = [
-    {
-      q: "What is GST registration?",
-      a: "It’s the process of enrolling a business under the GST Act to get a unique GSTIN.",
-    },
-    {
-      q: "Who must register for GST?",
-      a: "Entities exceeding turnover threshold or those involved in interstate/e-commerce supply.",
-    },
-    {
-      q: "What benefits do I get once registered?",
-      a: "Legal compliance, ITC, interstate trade rights, and eligibility for tenders.",
-    },
-    {
-      q: "What documents are required?",
-      a: "ID/address proof, registration proof, bank details, and DSC for companies/LLPs.",
-    },
-    {
-      q: "How long does approval take?",
-      a: "Typically 3–7 working days if documents are complete and accurate.",
-    },
-    {
-      q: "Can Chintan Agrawal & Co. handle the entire process?",
-      a: "Yes, we manage the full application, follow-up, and post-registration support.",
-    },
-  ];
+const faqs = [
+  {
+    q: "What is GST registration?",
+    a: "GST registration is the process by which a business or individual enrolls under the Goods and Services Tax (GST) regime and obtains a unique 15-digit GSTIN (Goods and Services Tax Identification Number). This GSTIN is used for filing GST returns, collecting taxes, and claiming input tax credits.",
+  },
+  {
+    q: "Who must register for GST?",
+    a: "Any business whose annual turnover exceeds ₹40 lakh (₹20 lakh for service providers or in special category states) must register. Additionally, businesses involved in interstate supply, e-commerce, or those required by law (such as input service distributors, agents, and reverse charge taxpayers) must also register, regardless of turnover.",
+  },
+  {
+    q: "What benefits do I get once registered?",
+    a: "Once registered, your business can legally collect GST from customers, claim input tax credit (ITC) on purchases, expand interstate without restrictions, become eligible for government tenders, and gain credibility with suppliers and clients.",
+  },
+  {
+    q: "What documents are required?",
+    a: "Typically, you need PAN and Aadhaar of the owner/directors, proof of business registration (like partnership deed or COI for companies), proof of principal place of business (electricity bill, rent agreement), bank account details (cancelled cheque or bank statement), and a Digital Signature Certificate (DSC) for companies and LLPs.",
+  },
+  {
+    q: "How long does approval take?",
+    a: "If all documents are correctly provided, GST registration is usually approved within 3–7 working days. Any discrepancies or additional queries from GST officers can delay the process slightly.",
+  },
+  {
+    q: "Can Chintan Agrawal & Co. handle the entire process?",
+    a: "Yes. Our team manages the end-to-end process, including documentation, application submission, tracking with GST authorities, and resolving queries until your GSTIN is issued. We also assist with GST compliance and filing after registration.",
+  },
+  {
+    q: "What is the turnover limit for mandatory GST registration?",
+    a: "For most businesses, the turnover threshold is ₹40 lakh. For service providers, the threshold is ₹20 lakh. In special category states (like those in the North-East), the thresholds are ₹20 lakh for goods and ₹10 lakh for services.",
+  },
+  {
+    q: "Can I voluntarily register even if I am below the threshold?",
+    a: "Yes. Voluntary GST registration allows you to claim input tax credit, avoid tax cascading, enhance credibility with customers, and make interstate supplies without restrictions.",
+  },
+  {
+    q: "Do I need separate GST registration for each state?",
+    a: "Yes. GST is state-specific, so if your business operates in multiple states, you must obtain a separate GSTIN for each state where you have a place of business.",
+  },
+  {
+    q: "What happens if I don’t register for GST when required?",
+    a: "Failure to register when mandatory can result in penalties of 10% of the tax due (minimum ₹10,000) or 100% of the tax due in cases of deliberate evasion. You may also face backdated tax liabilities and legal action.",
+  },
+];
 
-  const gstStats = [
-    { icon: FaRegBuilding, number: "1,000+", label: "GST Registrations Completed" },
-    { icon: FaSmile, number: "2,500+", label: "Businesses Simplified" },
-    { icon: FaCheckCircle, number: "100%", label: "On-Time Filing Assurance" },
-  ];
+
+ 
 
   return (
     <>

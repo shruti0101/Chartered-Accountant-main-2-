@@ -13,7 +13,7 @@ export default function FormSection() {
 
     try {
       const formData = new FormData(form);
-      await fetch("https://formsubmit.co/info@cachintanagrawal.com", {
+      await fetch("https://formsubmit.co/agrawalchintan27@gmail.com", {
         method: "POST",
         body: formData,
       });

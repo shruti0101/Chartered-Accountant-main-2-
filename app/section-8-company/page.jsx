@@ -249,13 +249,7 @@ const documents = [
 
       <SectionTitle>Process for Section 8 Company Registration</SectionTitle>
       <ProcessSteps steps={steps} />
-      <div className="p-3 md:p-5">
-        <img
-          className="max-w-5xl mx-auto h-auto object-contain"
-          src="/navservices/section8-process.png"
-          alt="Documents required for Section 8 Company"
-        />
-      </div>
+      
 
    {/* Documents */}
       <SectionTitle>Documents & Data Required</SectionTitle>

@@ -12,6 +12,7 @@ const BlogItem = ({ image, title, description, id }) => {
           <Image
             src={image}
             alt="blog image"
+            
             fill
             className="object-cover border-b border-gray-300"
           />

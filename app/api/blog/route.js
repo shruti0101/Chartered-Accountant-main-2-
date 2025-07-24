@@ -63,6 +63,53 @@ export async function DELETE(request) {
 }
 
 
+// api endpoint for data updation
+// PUT - Update blog
+// Handle blog update (PUT)
+export async function PUT(request) {
+  try {
+    const formData = await request.formData();
+    const id = formData.get("id");
+
+    const blog = await Blog.findById(id);
+    if (!blog) {
+      return NextResponse.json({ error: "Blog not found" }, { status: 404 });
+    }
+
+    blog.title = formData.get("title");
+    blog.description = formData.get("description");
+
+    const image = formData.get("image");
+    if (image && typeof image !== "string") {
+      // Handle new image upload
+      const timestamp = Date.now();
+      const arrayBuffer = await image.arrayBuffer();
+      const buffer = Buffer.from(arrayBuffer);
+      const extension = image.name.split(".").pop();
+      const fileName = `${timestamp}.${extension}`;
+      const filePath = path.join(process.cwd(), "public", "blog", fileName);
+
+      await writeFile(filePath, buffer);
+
+      // Delete old image
+      const oldPath = path.join(process.cwd(), "public", blog.image.replace(/^\/+/, ""));
+      try {
+        await fs.promises.unlink(oldPath);
+      } catch {}
+
+      blog.image = `/blog/${fileName}`;
+    }
+
+    await blog.save();
+
+    return NextResponse.json({ message: "Blog updated successfully" }, { status: 200 });
+  } catch (err) {
+    console.error("PUT error:", err);
+    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
+  }
+}
+
+
 // api endpoint for uploading blog data
 // This function handles the POST request to save blog data
 export async function POST(request) {

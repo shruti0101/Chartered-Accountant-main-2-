@@ -20,13 +20,17 @@ export default function Layout({ children }) {
           </div>
 
           {/* Right: Profile Image */}
-          <Image
-            src={Data.profile}
-            alt="Profile"
-            width={40}
-            height={40}
-            className="bg-gray-200 rounded-full"
-          />
+<Image
+  src={Data.profile}
+  alt="Profile"
+  width={40}
+  height={40}
+  style={{ width: "40px", height: "40px" }} // Force both dimensions
+  className="bg-gray-200 rounded-full object-cover"
+/>
+
+
+
         </div>
 
         {/* Main page content */}

@@ -5,7 +5,9 @@ import { useSearchParams, useRouter } from "next/navigation";
 import axios from "axios";
 import toast from "react-hot-toast";
 import Image from "next/image";
-import JoditEditor from "jodit-react";
+import dynamic from "next/dynamic";
+
+const JoditEditor = dynamic(() => import("jodit-react"), { ssr: false });
 
 export default function EditBlogPage() {
   const searchParams = useSearchParams();

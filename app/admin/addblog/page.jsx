@@ -6,7 +6,12 @@ import React from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
-import JoditEditor from "jodit-react";
+import dynamic from "next/dynamic";
+
+// Load JoditEditor only on client (disable SSR)
+const JoditEditor = dynamic(() => import("jodit-react"), { ssr: false });
+
+
 
 const Page = () => {
   const [image, setImage] = useState(false);

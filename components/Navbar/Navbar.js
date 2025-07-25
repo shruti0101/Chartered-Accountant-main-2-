@@ -90,7 +90,8 @@ const Navbar = ({ className = "" }) => {
   const handleCloseDrawer = () => setDrawerOpen(false);
 
   return (
-    <nav className="py-3 bg-background/70 border-b-white !sticky !top-0 backdrop-blur z-50 shadow-xl">
+   <nav className="py-3 bg-white fixed top-0 left-0 w-full backdrop-blur bg-opacity-80 z-50 shadow-md">
+
       <div className="container mx-auto flex justify-between items-center">
 
         {/* Logo and Title */}

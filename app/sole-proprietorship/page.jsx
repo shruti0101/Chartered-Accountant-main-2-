@@ -6,11 +6,11 @@ import ProcessSteps from "@/components/headcomponent/Process";
 import FAQSection from "@/components/headcomponent/Faq";
 import Cta from "@/components/Cta/Cta";
 import Hero from "@/components/headcomponent/Hero/Hero";
-
+import Image from 'next/image';
 import {
-  FaCheckCircle, FaLock,
-  FaIdCard, FaMapMarkedAlt, FaFileContract,
-  FaUniversity, FaUserShield, FaKey, FaLaptopCode, FaCertificate,
+  FaCheckCircle, FaLaptopCode,FaLock,
+  FaFileContract,
+  FaUniversity,  FaCertificate,
 } from "react-icons/fa";
 
 export default function SoleProprietorshipRegistration() {
@@ -240,14 +240,15 @@ const tabs = [
             </ul>
           </div>
 
-          <div>
-            <img
-              src="/navservices/sole2.png"
-              alt="Sole Proprietorship Registration"
-              className="w-full mt-3 h-auto object-contain"
-              loading="lazy"
-            />
-          </div>
+           <div className="relative w-full h-[300px] md:h-[450px] order-1 md:order-2">
+                    <Image
+                      src="/navservices/sole2.webp"
+                      alt="mis"
+                      fill
+                      className="rounded-xl object-contain"
+                      loading="lazy"
+                    />
+                  </div>
         </div>
       </div>
 
@@ -295,14 +296,7 @@ const tabs = [
       <SectionTitle>Process for Sole Proprietorship Registration</SectionTitle>
       <ProcessSteps steps={steps} />
 
-      {/* Illustration / Documents Image */}
-      <div className="p-3 md:p-5">
-        <img
-          className="max-w-5xl mx-auto h-auto object-contain"
-          src="/navservices/sole-doc.webp"
-          alt="Documents required for Sole Proprietorship"
-        />
-      </div>
+  
 
       {/* FAQs */}
       <SectionTitle>Frequently Asked Questions</SectionTitle>

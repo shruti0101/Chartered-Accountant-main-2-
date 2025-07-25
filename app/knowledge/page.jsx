@@ -7,7 +7,7 @@ const KnowledgeHubHero = () => {
     <section className="relative bg-gradient-to-r from-[#f5f8ff] to-[#e8f0ff] py-16 md:py-24">
       <div className="container mx-auto px-4 text-center max-w-3xl">
         {/* Heading */}
-        <h1 className="text-3xl md:text-5xl font-extrabold text-[#1C398E] leading-tight mb-6">
+        <h1 className="text-3xl md:text-5xl font-extrabold text-[#1C398E] leading-tight  pt-12 mb-6">
           Empowering Businesses with Knowledge
         </h1>
 

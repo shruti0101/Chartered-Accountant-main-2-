@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import {
   FaCheckCircle,
   FaMapMarkedAlt,
@@ -10,12 +11,12 @@ import {
   FaLightbulb,
   FaFileContract,
   FaUniversity,
-  FaUserShield,
+
   FaKey,
   FaBuilding,
   FaStore,
   FaHandshake,
-  FaClipboardList,
+  
 } from "react-icons/fa";
 
 import SectionTitle from "@/components/headcomponent/Sectiontitle";
@@ -24,7 +25,7 @@ import BenefitsList from "@/components/headcomponent/Benefits";
 import DocumentsRequired from "@/components/headcomponent/Documents";
 import FAQSection from "@/components/headcomponent/Faq";
 import Cta from "@/components/Cta/Cta";
-import Setsapart from "@/components/Setsapart/Setsapart";
+
 import Types from "@/components/headcomponent/Types";
 
 export default function ManagementAudit() {
@@ -162,7 +163,7 @@ export default function ManagementAudit() {
   return (
     <>
       {/* Hero */}
-      <section>
+      <section className="pt-22">
         <div className="absolute inset-0 -z-10 h-auto md:min-h-[650px] bg-gradient-to-br from-blue-100 via-green-100 to-white" />
         <div className="container mx-auto px-4 py-12">
           <div className="flex flex-col lg:flex-row items-center gap-10">
@@ -192,8 +193,6 @@ export default function ManagementAudit() {
         </div>
       </section>
 
-      {/* What sets us apart */}
-      <Setsapart />
 
       {/* Why Management Audit */}
       <div className="bg-white w-full py-12 px-4 md:px-10 lg:px-20">
@@ -251,14 +250,15 @@ export default function ManagementAudit() {
           </div>
 
           {/* Right Image */}
-          <div>
-            <img
-              src="/navservices/itr.webp"
-              alt="Income Tax Return Filing"
-              className="w-full h-auto object-contain rounded-sm shadow-xl"
-              loading="lazy"
-            />
-          </div>
+       <div className="relative w-full h-[200px] md:h-[450px] order-1 md:order-2">
+                <Image
+                  src="/navservices/itr.webp"
+                  alt="GST registration process"
+                  fill
+                  className="rounded-xl object-contain"
+                  loading="lazy"
+                />
+              </div>
         </div>
       </div>
 
@@ -298,14 +298,15 @@ export default function ManagementAudit() {
             </ul>
 
             {/* right – image */}
-            <div className=" rounded-2xl shadow-lg">
-              <img
-                src="/navservices/itr2.jpg"
-                alt="Income Tax Return Status on laptop"
-                className="w-full h-auto object-contain rounded-2xl shadow-lg"
-                loading="lazy"
-              />
-            </div>
+            <div className="relative w-full h-[200px] md:h-[450px] order-1 md:order-2">
+                     <Image
+                       src="/navservices/itr2.webp"
+                       alt="GST registration process"
+                       fill
+                       className="rounded-xl object-contain"
+                       loading="lazy"
+                     />
+                   </div>
           </div>
         </div>
       </section>
@@ -314,7 +315,7 @@ export default function ManagementAudit() {
       <Types filingTypes={filingTypes} heading={heading} />
 
       {/* Benefits */}
-      <section className="bg-gradient-to-br from-[#eef3fb] to-[#fdfdff] md:py-12 px-4 rounded-xl">
+      <section className="bg-gradient-to-br mt-4 from-[#eef3fb] to-[#fdfdff] md:py-12 px-4 rounded-xl">
         <SectionTitle>Benefits Of Income Tax Filing</SectionTitle>
         <BenefitsList benefits={benefits} />
       </section>
@@ -325,12 +326,16 @@ export default function ManagementAudit() {
         <h3 className="text-2xl md:text-4xl capitalize font-bold text-center text-blue-900 mb-10 mt-10">
           Process of income tax filing
         </h3>
-        <img
-          src="/navservices/taxprocess.png"
-          alt="DIN Compliance illustration"
-          className=" w-full h-auto object-contain rounded-md"
-          loading="lazy"
-        />
+          <div className="w-full max-w-7xl mx-auto px-4 md:px-0">
+               <Image
+                 src="/navservices/taxprocess.webp"
+                 alt="GST Compliance Info"
+                 width={1000}
+                 height={500}
+                 className="mx-auto"
+                
+               />
+             </div>
       </div>
 
       {/* Documents */}

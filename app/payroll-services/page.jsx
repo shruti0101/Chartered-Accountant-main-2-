@@ -17,7 +17,7 @@ import FAQSection         from "@/components/headcomponent/Faq";
 import Cta                from "@/components/Cta/Cta";
 import Setsapart          from "@/components/Setsapart/Setsapart";
 import Types              from "@/components/headcomponent/Types";
-
+import Image from "next/image";
 export default function PayrollServices() {
   const [open, setOpen]   = useState(null);
   const toggle            = (idx) => setOpen(open === idx ? null : idx);
@@ -105,7 +105,7 @@ const faqs = [
   return (
     <>
       {/* Hero / Intro */}
-      <section>
+      <section className="pt-22">
         <div className="absolute inset-0 -z-10 h-auto md:min-h-[675px] bg-gradient-to-br from-blue-100 via-green-100 to-white" />
         <div className="container mx-auto px-4 py-12">
           <div className="flex flex-col lg:flex-row items-center gap-10">
@@ -158,14 +158,15 @@ const faqs = [
               </li>
             </ul>
           </div>
-          <div>
-            <img
-              src="/navservices/payroll.jpg"
-              alt="Payroll processing desk illustration"
-              className="w-full h-auto object-contain rounded-md"
-              loading="lazy"
-            />
-          </div>
+         <div className="relative w-full h-[200px] md:h-[450px] order-1 md:order-2">
+                    <Image
+                      src="/navservices/payroll.webp"
+                      alt="payroll"
+                      fill
+                      className="rounded-xl object-contain"
+                      loading="lazy"
+                    />
+                  </div>
         </div>
       </div>
 

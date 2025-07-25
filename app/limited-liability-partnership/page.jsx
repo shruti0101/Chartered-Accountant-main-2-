@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import SectionTitle from "@/components/headcomponent/Sectiontitle";
 
-
+import Image from 'next/image';
 import BenefitsList from "@/components/headcomponent/Benefits";
 import ProcessSteps from "@/components/headcomponent/Process";
 import DocumentsRequired from "@/components/headcomponent/Documents";
@@ -279,7 +279,7 @@ const faqs = [
    
 
  {/* Registration Info */}
-<div className="bg-white w-full py-10 px-4 md:px-10 lg:px-20">
+<div className="bg-white w-full md:py-10 px-4 md:px-10 lg:px-20">
   <div className="grid md:grid-cols-2 md:gap-10 items-center">
     <div>
       <h2 className="text-3xl mt-7 md:text-4xl font-extrabold text-[#1C398E] mb-4">
@@ -316,14 +316,15 @@ const faqs = [
       </ul>
     </div>
 
-    <div>
-      <img
-        src="/navservices/llp1.jpg"
-        alt="Limited Liability Partnership Registration"
-        className="max-w-xl mt-3 h-auto object-contain"
-        loading="lazy"
-      />
-    </div>
+   <div className="relative w-full h-[300px] md:h-[450px] order-1 md:order-2">
+            <Image
+              src="/navservices/llp1.jpg"
+              alt="GST registration process"
+              fill
+              className="rounded-xl object-contain"
+              loading="lazy"
+            />
+          </div>
   </div>
 </div>
 
@@ -378,7 +379,16 @@ const faqs = [
 
        <div className=' p-3 md:p-10'>
         <SectionTitle>Characteristics of Limited Liability Partnership (LLP)</SectionTitle>
-        <img  className="max-w-4xl mx-auto h-auto object-contain "src="/navservices/Characteristics-llp.png" alt="private company process" />
+        <div className="w-full max-w-5xl mx-auto px-4 md:px-0">
+                      <Image
+                        src="/navservices/Characteristics-llp.webp"
+                        alt="benefits-of-audit"
+                        width={800}
+                        height={500}
+                        className="mx-auto"
+                       
+                      />
+                    </div>
       </div>
 
       <SectionTitle >Documents Required for Limited Liability Partnership (LLP)</SectionTitle>

@@ -9,7 +9,7 @@ const contact = () => {
   style={{ backgroundImage: "url(/contact/bg-contact.jpg.webp)" }}
   className="bg-center bg-cover bg-no-repeat bg-black/5 h-full py-17 "
 >
-  <div data-aos="fade-up" className="max-w-6xl mx-auto text-center text-white  p-10 rounded-3xl shadow-lg backdrop-blur-sm">
+  <div data-aos="fade-up" className="max-w-6xl pt-20 mx-auto text-center text-white  p-10 rounded-3xl shadow-lg backdrop-blur-sm">
     <h2 className="text-4xl md:text-5xl font-bold mb-4">
       Get In Touch with <span className="text-[#00A63E]">Chintan Agrawal & Co.</span>
     </h2>
@@ -57,19 +57,19 @@ const contact = () => {
       },
       {
         title: 'roc compliances',
-        img: '/contact/roc.jpg',
+        img: '/contact/roc.webp',
         desc: 'Ensure food safety compliance with expert assistance.',
          link:"/annual-filings"
       },
       {
         title: 'Audit book keeping and accounting services',
-        img: '/contact/accounting.jpg',
+        img: '/contact/accounting.webp',
         desc: 'Flexible structures for startups & service professionals.',
          link:"/internal-audit"
       },
       {
         title: 'taxation related services',
-        img: '/contact/Taxation.jpeg',
+        img: '/contact/Taxation.webp',
         desc: 'Protect your brand identity and gain legal ownership.',
          link:"/income-tax-filing"
       },

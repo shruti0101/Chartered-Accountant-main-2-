@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import SectionTitle from "@/components/headcomponent/Sectiontitle";
 
-
+import Image from 'next/image';
 import BenefitsList from "@/components/headcomponent/Benefits";
 import ProcessSteps from "@/components/headcomponent/Process";
 import DocumentsRequired from "@/components/headcomponent/Documents";
@@ -302,8 +302,10 @@ const faqs = [
     </div>
 
     <div>
-      <img
+      <Image
         src="/navservices/private-company.png"
+        height={400}
+        width={400}
         alt="Private Limited Company Registration"
         className="w-full mt-3 h-auto object-contain"
         loading="lazy"
@@ -336,8 +338,10 @@ const faqs = [
         {/* Right Certificate Image */}
         <div className="relative">
           <div className="rounded-lg shadow-lg ring-1 ring-gray-200 overflow-hidden max-w-md mx-auto">
-            <img
+            <Image
               src="/navservices/private-company-cert.png" // ✅ Replace with your actual certificate path
+                   height={400}
+        width={400}
               alt="Private Limited Company Registration Certificate"
               className="w-full h-auto object-contain rounded-md"
               loading="lazy"
@@ -403,9 +407,15 @@ const faqs = [
       <SectionTitle>Process for Private Limited Company Registration</SectionTitle>
       <ProcessSteps steps={steps} />
 
-       <div className=' p-3 md:p-5'>
-        <img  className="max-w-5xl mx-auto h-auto object-contain "src="/navservices/private-company-process.png" alt="private company process" />
-      </div>
+      <div className="relative w-full h-[200px] md:h-[450px] order-1 md:order-2">
+                         <Image
+                           src="/navservices/private-company-process.png"
+                           alt="private-company-process"
+                           fill
+                           className="rounded-xl object-contain"
+                           loading="lazy"
+                         />
+                       </div>
 
       <SectionTitle >Documents Required for Private Limited Company Registration</SectionTitle>
       <DocumentsRequired documents={documents} />

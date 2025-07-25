@@ -13,7 +13,7 @@ import {
   FaCertificate,
   FaBuilding,
 } from "react-icons/fa";
-
+import Image from "next/image";
 import SectionTitle from "@/components/headcomponent/Sectiontitle";
 import Hero from "@/components/headcomponent/Hero/Hero";
 import BenefitsList from "@/components/headcomponent/Benefits";
@@ -148,14 +148,17 @@ const description="LLP is a flexible business structure offering the benefits of
         </li>
       </ul>
     </div>
-    <div>
-      <img
-        src="/navservices/llp.webp"
-        alt="LLP registration process in India"
-        className="w-full h-auto object-contain rounded-md"
-        loading="lazy"
-      />
-    </div>
+   <div className="relative w-full h-[200px] md:h-[450px]">
+             {" "}
+             {/* required height */}
+             <Image
+               src="/navservices/llp.webp"
+               alt="Types-of-business"
+               fill
+               className="rounded-xl object-contain"
+               loading="lazy"
+             />
+           </div>
   </div>
 </section>
 
@@ -168,7 +171,7 @@ const description="LLP is a flexible business structure offering the benefits of
 
 
 
-     <section className="bg-[#f9f9f9] text-gray-800 px-4 py-12">
+     <section className="bg-[#f9f9f9] text-gray-800 px-4 md:py-12">
   <div className="mx-auto max-w-6xl">
     {/* heading */}
     <h2 className="text-center text-3xl sm:text-4xl font-bold text-[#1a3e72]">
@@ -198,14 +201,17 @@ const description="LLP is a flexible business structure offering the benefits of
       </ul>
 
       {/* right – image */}
-      <div className="">
-        <img
-          src="/navservices/llp2.webp"
-          alt="LLP Registration Advantages"
-          className="max-w-md h-auto object-contain "
-          loading="lazy"
-        />
-      </div>
+      <div className="relative w-full h-[200px] md:h-[450px]">
+             {" "}
+             {/* required height */}
+             <Image
+               src="/navservices/llp2.webp"
+               alt="Types-of-business"
+               fill
+               className="rounded-xl object-contain"
+               loading="lazy"
+             />
+           </div>
     </div>
   </div>
 </section>

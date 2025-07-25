@@ -4,7 +4,7 @@ const industries = [
   {
     title: "Real Estate",
     tag: "Industrial",
-    img: "/industries/realestate.jpg",
+    img: "/industries/realestate.webp",
   },
   {
     title: "Information Technology",
@@ -20,7 +20,7 @@ const industries = [
   {
     title: "Manufacturers",
     tag: "Retail",
-    img: "/industries/manufacturing.jpg",
+    img: "/industries/manufacturing.webp",
   },
 
   {
@@ -31,12 +31,12 @@ const industries = [
   {
     title: "Importers / Exporters",
     tag: "Finance",
-    img: "/industries/import.jpeg",
+    img: "/industries/import.webp",
   },
   {
     title: "Brand Developers",
     tag: "Finance",
-    img: "/industries/brand.png",
+    img: "/industries/brand.webp",
   },
 
   {
@@ -54,8 +54,8 @@ const industries = [
 
 export default function IndustriesGrid() {
   return (
-    <section className="py-16 bg-[#E5EBFC]">
-      <div className="container mx-auto px-4">
+    <section className="py-20 bg-[#E5EBFC]">
+      <div className="container mx-auto px-4 pt-20">
         <h1
           data-aos="fade-up"
           className="text-[#1C398E] text-3xl md:text-5xl font-bold text-center mb-9"

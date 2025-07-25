@@ -25,7 +25,7 @@ export default function PublicationsPage() {
   return (
     <div className="px-4 py-10 md:px-10 max-w-7xl mx-auto">
       {/* Hero section */}
-      <div className="container mx-auto px-4 text-center max-w-3xl">
+      <div className="container mx-auto px-4 text-center max-w-3xl pt-25">
         <h1 className="text-3xl md:text-5xl font-extrabold text-[#1C398E] leading-tight mb-6">
           Your Trusted Source for Financial Insights
         </h1>

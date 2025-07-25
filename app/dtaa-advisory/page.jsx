@@ -1,6 +1,7 @@
 "use client";
 import ProcessSteps from "@/components/headcomponent/Process"
 import { useState } from "react";
+import Image from "next/image";
 import {
   FaCheckCircle,
   FaMapMarkedAlt,
@@ -192,7 +193,7 @@ export default function DtaaAdvisory() {
 
   return (
     <>
-      <section>
+      <section className="pt-22">
         <div className="absolute inset-0 -z-10 h-auto md:min-h-[650px] bg-gradient-to-br from-blue-100 via-green-100 to-white" />
         <div className="container mx-auto px-4 py-12">
           <div className="flex flex-col lg:flex-row items-center gap-10">
@@ -240,14 +241,15 @@ export default function DtaaAdvisory() {
               </li>
             </ul>
           </div>
-          <div>
-            <img
-              src="/navservices/DTAA.jpg"
-              alt="DTAA Advisory illustration"
-              className="w-full h-auto object-contain rounded-md"
-              loading="lazy"
-            />
-          </div>
+             <div className="relative w-full h-[200px] md:h-[450px] order-1 md:order-2">
+                     <Image
+                       src="/navservices/DTAA.jpg"
+                       alt="DTAA"
+                       fill
+                       className="rounded-xl object-contain"
+                       loading="lazy"
+                     />
+                   </div>
         </div>
       </div>
 

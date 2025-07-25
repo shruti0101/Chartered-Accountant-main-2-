@@ -6,7 +6,7 @@ import {
   FaFileContract, FaUniversity, FaUserShield, FaKey,
   FaBuilding, FaStore, FaHandshake, FaClipboardList
 } from "react-icons/fa";
-
+import Image from "next/image";
 import SectionTitle       from "@/components/headcomponent/Sectiontitle";
 import FormSection        from "@/components/headcomponent/Formsection";
 import BenefitsList       from "@/components/headcomponent/Benefits";
@@ -91,7 +91,7 @@ export default function ManagementAudit() {
   return (
     <>
       {/* Hero */}
-      <section>
+      <section className="pt-22">
         <div className="absolute inset-0 -z-10 h-auto md:min-h-[650px] bg-gradient-to-br from-blue-100 via-green-100 to-white" />
         <div className="container mx-auto px-4 py-12">
           <div className="flex flex-col lg:flex-row items-center gap-10">
@@ -119,7 +119,7 @@ export default function ManagementAudit() {
       <Setsapart />
 
       {/* Why Management Audit */}
-      <div className="bg-white w-full py-12 px-4 md:px-10 lg:px-20">
+      <div className="bg-white w-full py-8 md:py-0  px-4 md:px-10 lg:px-20">
         <div className="grid md:grid-cols-2 gap-10 items-center">
           <div>
             <h2 className="text-3xl md:text-4xl font-extrabold text-[#1C398E] mb-4">
@@ -145,14 +145,16 @@ export default function ManagementAudit() {
               </li>
             </ul>
           </div>
-          <div>
-            <img
-              src="/navservices/objectives.png"
-              alt="Management audit presentation"
-              className="w-full h-auto object-contain "
-              loading="lazy"
-            />
-          </div>
+        
+                  <div className="relative w-full h-[200px] md:h-[450px] order-1 md:order-2">
+                    <Image
+                      src="/navservices/objectives.webp"
+                      alt="GST registration process"
+                      fill
+                      className="rounded-xl object-contain"
+                      loading="lazy"
+                    />
+                  </div>
         </div>
       </div>
 
@@ -160,20 +162,21 @@ export default function ManagementAudit() {
       <Types filingTypes={filingTypes} heading={heading} />
 
       {/* Benefits */}
-      <section className="bg-gradient-to-br from-[#eef3fb] to-[#fdfdff] md:py-12 px-4 rounded-xl">
+      <section className="bg-gradient-to-br mt-4 from-[#eef3fb] to-[#fdfdff] md:py-12 px-4 rounded-xl">
         <SectionTitle>Benefits of a Management Audit</SectionTitle>
         <BenefitsList benefits={benefits} />
       </section>
 
-        <div className="mx-auto max-w-3xl">
-            
-            <img
-              src="/navservices/benefits-of-audit.jpg"
-              alt="DIN Compliance illustration"
-              className=" w-full h-auto object-fit-contain"
-              loading="lazy"
-            />
-          </div>
+          <div className="w-full max-w-5xl mx-auto px-4 md:px-0">
+                <Image
+                  src="/navservices/benefits-of-audit.webp"
+                  alt="benefits-of-audit"
+                  width={800}
+                  height={500}
+                  className="mx-auto"
+                 
+                />
+              </div>
 
         
 

@@ -191,7 +191,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="max-w-7xl flex justify-between mt-10 border-t border-white/10 pt-4 text-sm px-4">
+      <div className="max-w-7xl w-full flex flex-col md:flex-row justify-between border-t border-white/10 pt-4 text-sm px-4">
         <p>
           © 2025 <span className="font-semibold">Chintan Agrawal & CO</span>. All Rights Reserved.
         </p>
@@ -200,7 +200,7 @@ export default function Footer() {
         </p>
        
       </div>
-       <p className="mt-2 text-center mt-3 max-w-7xl text-sm mb-4">
+       <p className="mt-2 text-center  mt-3 max-w-7xl text-sm mb-4">
           Chintan Agrawal & CO is a Chartered Accountancy firm offering professional consultancy and compliance
           services. We are an independent entity and are not affiliated with any government authority. Our services
           include business and startup registrations, GST filings, trademark registrations, and other statutory

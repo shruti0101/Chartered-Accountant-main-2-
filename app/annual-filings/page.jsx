@@ -7,7 +7,7 @@ import {
   FaUniversity, FaUserShield, FaKey, FaLaptopCode, FaCertificate,
   FaBuilding, FaStore, FaHandshake
 } from "react-icons/fa";
-
+import Image from "next/image";
 import SectionTitle       from "@/components/headcomponent/Sectiontitle";
 import FormSection        from "@/components/headcomponent/Formsection";
 import BenefitsList       from "@/components/headcomponent/Benefits";
@@ -15,7 +15,7 @@ import ProcessSteps       from "@/components/headcomponent/Process";
 import DocumentsRequired  from "@/components/headcomponent/Documents";
 import FAQSection         from "@/components/headcomponent/Faq";
 import Cta                from "@/components/Cta/Cta";
-import Setsapart          from "@/components/Setsapart/Setsapart";
+
 import Types from "@/components/headcomponent/Types";
 
 export default function AnnualFiling() {
@@ -71,7 +71,7 @@ export default function AnnualFiling() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative">
+      <section className="relative pt-24">
         <div className="absolute inset-0 -z-10 h-auto md:min-h-[575px] bg-gradient-to-br from-blue-100 via-green-100 to-white" />
         <div className="container mx-auto px-4 py-12">
           <div className="flex flex-col lg:flex-row items-center gap-10">
@@ -93,8 +93,7 @@ export default function AnnualFiling() {
         </div>
       </section>
 
-      {/* Sets Apart Section */}
-      <Setsapart />
+
 
       {/* Why Annual Filing Info Section */}
       <div className="bg-white w-full py-12 px-4 md:px-10 lg:px-20">
@@ -121,14 +120,16 @@ export default function AnnualFiling() {
               </li>
             </ul>
           </div>
-          <div>
-            <img
-              src="/navservices/Annual-Filing.jpg"
-              alt="Annual Filing India"
-              className="w-full h-auto object-contain rounded-md"
-              loading="lazy"
-            />
-          </div>
+        {/* IMAGE SECOND ON MOBILE, FIRST ON DESKTOP */}
+                <div className="relative w-full h-[200px] md:h-[450px] order-1 md:order-2">
+                  <Image
+                    src="/navservices/Annual-Filing.webp"
+                    alt="Annual-Filing"
+                    fill
+                    className="rounded-xl object-contain"
+                    loading="lazy"
+                  />
+                </div>
         </div>
       </div>
 
@@ -136,7 +137,7 @@ export default function AnnualFiling() {
      <Types filingTypes={filingTypes} heading={heading}></Types>
 
       {/* Benefits */}
-      <div className="bg-gradient-to-br from-[#eef3fb] to-[#fdfdff] md:py-12 px-4 rounded-xl">
+      <div className="bg-gradient-to-br from-[#eef3fb] mt-4 to-[#fdfdff] md:py-12 px-4 rounded-xl">
         <SectionTitle>Benefits of Annual Filing</SectionTitle>
         <BenefitsList benefits={benefits} />
       </div>

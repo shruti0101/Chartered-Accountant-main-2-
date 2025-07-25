@@ -7,10 +7,10 @@
 import { useState } from "react";
 import {
   FaCheckCircle, FaLock, FaIdCard, FaMapMarkedAlt,
-  FaFileContract, FaUniversity, FaUserShield, FaKey,
+  FaFileContract, FaUserShield, FaKey,
   FaLaptopCode, FaCertificate, FaBuilding
 } from "react-icons/fa";
-
+import Image from "next/image";
 import SectionTitle from "@/components/headcomponent/Sectiontitle";
 import FormSection from "@/components/headcomponent/Formsection";
 import BenefitsList from "@/components/headcomponent/Benefits";
@@ -70,7 +70,7 @@ export default function DirectorKYC() {
 
   return (
     <>
-      <section className="">
+      <section className="pt-20">
         <div className="absolute inset-0 -z-10 h-auto md:min-h-[670px] bg-gradient-to-br from-blue-100 via-green-100 to-white" />
         <div className="container mx-auto px-4 py-12">
           <div className="flex flex-col lg:flex-row items-center gap-10">
@@ -118,18 +118,22 @@ export default function DirectorKYC() {
               </li>
             </ul>
           </div>
-          <div>
-            <img
-              src="/navservices/kyc.jpg"
-              alt="DIR-3 KYC process for directors"
-              className="w-full h-auto object-contain rounded-md"
+
+   <div className="relative w-full h-[200px] md:h-[450px] order-1 md:order-2">
+            <Image
+              src="/services/businessadvice.webp"
+              alt="DIN compliance"
+              fill
+              className="rounded-xl object-contain"
               loading="lazy"
             />
           </div>
+          
+     
         </div>
       </section>
 
-      <section className="py-12 px-4">
+      <section className="md:py-12 px-4">
         <div className="max-w-5xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-10">
             Filing Types for DIR-3 KYC
@@ -146,7 +150,7 @@ export default function DirectorKYC() {
         </div>
       </section>
 
-      <section className="bg-gradient-to-br from-[#eef3fb] to-[#fdfdff] md:py-12 px-4 rounded-xl">
+      <section className="bg-gradient-to-br from-[#eef3fb] mt-4 md:mt-0 to-[#fdfdff] md:py-12 px-4 rounded-xl">
         <SectionTitle>Key Benefits of Filing DIN KYC</SectionTitle>
         <BenefitsList benefits={benefits} />
       </section>
@@ -160,7 +164,7 @@ export default function DirectorKYC() {
               Why choose us for DIN Compliance
             </h3>
             <img
-              src="/navservices/8.png"
+              src="/navservices/8.webp"
               alt="DIN Compliance illustration"
               className="w-full h-auto object-contain rounded-md"
               loading="lazy"

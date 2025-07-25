@@ -10,8 +10,7 @@ import {
   ChartBarIcon,
 } from "@heroicons/react/24/outline";
 import Cta from "@/components/Cta/Cta";
-import Footer from "@/components/Footer/Footer";
-import { motion } from "framer-motion";
+
 
 
 import {
@@ -77,7 +76,7 @@ export default function AboutSection() {
     <>
       <section
         id="about"
-        className="relative   bg-gradient-to-br from-blue-50/70 via-white to-white overflow-hidden"
+        className="relative pt-20  bg-gradient-to-br from-blue-50/70 via-white to-white overflow-hidden"
       >
         {/* Decorative blobs */}
         <div className="absolute -z-10 inset-0 opacity-25 [mask-image:radial-gradient(ellipse_at_center,white,transparent)] pointer-events-none select-none">
@@ -88,7 +87,7 @@ export default function AboutSection() {
         {/*────────── HEADING BLOCK WITH BG IMAGE ──────────*/}
         <div
           className="relative  overflow-hidden bg-cover bg-center"
-          style={{ backgroundImage: "url('/process.jpg')" }}
+          style={{ backgroundImage: "url('/process.webp')" }}
         >
           <div className="absolute inset-0 bg-black/10" />
 

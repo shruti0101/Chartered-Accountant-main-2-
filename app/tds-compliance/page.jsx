@@ -7,7 +7,7 @@ import {
   FaUniversity, FaUserShield, FaKey, FaLaptopCode, FaCertificate,
   FaBuilding, FaStore, FaHandshake, FaBriefcase,FaSmile 
 } from "react-icons/fa";
-
+import Image from "next/image";
 import SectionTitle       from "@/components/headcomponent/Sectiontitle";
 import FormSection        from "@/components/headcomponent/Formsection";
 import BenefitsList       from "@/components/headcomponent/Benefits";
@@ -70,7 +70,7 @@ export default function TDSComplianceServices() {
 
   return (
     <>
-      <section>
+      <section className="pt-22">
         <div className="absolute inset-0 -z-10 h-auto md:min-h-[675px] bg-gradient-to-br from-blue-100 via-green-100 to-white" />
         <div className="container mx-auto px-4 py-12">
           <div className="flex flex-col lg:flex-row items-center gap-10">
@@ -119,20 +119,21 @@ export default function TDSComplianceServices() {
               </li>
             </ul>
           </div>
-          <div>
-            <img
-              src="/navservices/tds.webp"
-              alt="TDS compliance illustration"
-              className="w-full h-auto object-contain rounded-md"
-              loading="lazy"
-            />
-          </div>
+         <div className="relative w-full h-[200px] md:h-[450px] order-1 md:order-2">
+                    <Image
+                      src="/navservices/tds.webp"
+                      alt="tds"
+                      fill
+                      className="rounded-xl object-contain"
+                      loading="lazy"
+                    />
+                  </div>
         </div>
       </div>
 
       <Types filingTypes={filingTypes} heading={heading} />
 
-      <section className="bg-gradient-to-br from-[#eef3fb] to-[#fdfdff] md:py-12 px-4 rounded-xl">
+      <section className="bg-gradient-to-br from-[#eef3fb] to-[#fdfdff] md:py-12 px-4 mt-4 rounded-xl">
         <SectionTitle>Benefits of TDS Compliance with Experts</SectionTitle>
         <BenefitsList benefits={benefits} />
       </section>

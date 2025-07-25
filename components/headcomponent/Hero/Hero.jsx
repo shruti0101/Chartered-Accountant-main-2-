@@ -2,7 +2,7 @@
 import Formsection from "@/components/headcomponent/Formsection";
 export default function ServiceWithFormSection({ title, description }) {
   return (
-    <section>
+    <section className="pt-20">
       <div className="absolute inset-0 -z-10 h-auto md:min-h-[660px] bg-gradient-to-br from-blue-100 via-green-100 to-white" />
       <div className="container mx-auto px-4 py-12">
         <div className="flex flex-col lg:flex-row items-center gap-10">

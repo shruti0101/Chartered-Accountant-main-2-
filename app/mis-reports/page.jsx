@@ -5,7 +5,7 @@ import {
   FaCheckCircle, FaChartPie, FaFileContract, FaClipboardList,
   FaMapMarkedAlt, FaUserTie, FaUniversity, FaLaptopCode, FaKey
 } from "react-icons/fa";
-
+import Image from "next/image";
 import SectionTitle from "@/components/headcomponent/Sectiontitle";
 import FormSection from "@/components/headcomponent/Formsection";
 import BenefitsList from "@/components/headcomponent/Benefits";
@@ -56,7 +56,7 @@ export default function MISReports() {
 
   return (
     <>
-      <section className="">
+      <section className="pt-22">
         <div className="absolute inset-0 -z-10 h-auto md:min-h-[670px] bg-gradient-to-br from-blue-100 via-green-100 to-white" />
         <div className="container mx-auto px-4 py-12">
           <div className="flex flex-col lg:flex-row items-center gap-10">
@@ -104,14 +104,15 @@ export default function MISReports() {
               </li>
             </ul>
           </div>
-          <div>
-            <img
-              src="/navservices/mis.png"
-              alt="MIS reporting process"
-              className="w-full h-auto object-contain rounded-md"
-              loading="lazy"
-            />
-          </div>
+           <div className="relative w-full h-[200px] md:h-[450px] order-1 md:order-2">
+                   <Image
+                     src="/navservices/mis.webp"
+                     alt="mis"
+                     fill
+                     className="rounded-xl object-contain"
+                     loading="lazy"
+                   />
+                 </div>
         </div>
       </section>
 

@@ -10,7 +10,7 @@ import DocumentsRequired from "@/components/headcomponent/Documents";
 import FAQSection from "@/components/headcomponent/Faq";
 import Cta from "@/components/Cta/Cta";
 import Setsapart from "@/components/Setsapart/Setsapart";
-
+import Image from "next/image";
 import {
   FaCheckCircle, FaCloud, FaChartLine, FaSyncAlt, FaIdCard,
   FaMapMarkedAlt, FaFileContract, FaUniversity, FaUserShield,
@@ -69,7 +69,7 @@ export default function TallyQuickbooksServices() {
   return (
     <>
       {/* Hero Section */}
-      <section>
+      <section className="pt-20">
         <div className="absolute inset-0 -z-10 h-auto md:min-h-[660px] bg-gradient-to-br from-blue-100 via-green-100 to-white" />
         <div className="container mx-auto px-4 py-12">
           <div className="flex flex-col lg:flex-row items-center gap-10">
@@ -109,9 +109,17 @@ export default function TallyQuickbooksServices() {
               <li className="flex items-start gap-2"><FaCheckCircle className="text-green-600 mt-1" /><span><strong>Data Migration:</strong> Smooth switch from Excel or legacy systems to modern accounting.</span></li>
             </ul>
           </div>
-          <div>
-            <img src="/navservices/telly.png" alt="Accounting Platforms" className="w-full h-auto object-contain" loading="lazy" />
-          </div>
+        
+              <div className="relative w-full h-[200px] md:h-[450px]"> {/* required height */}
+           <Image
+             src="/navservices/telly.webp"
+             alt="GST registration process"
+             fill
+             className="rounded-xl object-contain"
+             loading="lazy"
+           />
+         </div>
+          
         </div>
       </div>
 

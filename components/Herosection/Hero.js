@@ -7,13 +7,14 @@ import "swiper/css";
 import "swiper/css/effect-fade";
 import "swiper/css/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { TypewriterEffectSmooth } from "../ui/typewriter-effect";
 import "../Herosection/Hero.css";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const slides = [
   {
-    image: "/hero4.jpg",
+    image: "/hero4.webp",
     heading: "Register Your Corporate Taxes with Confidence",
     lines: ["Trusted by Businesses Across India"],
     description:
@@ -21,7 +22,7 @@ const slides = [
     cta: { label: "Request Consultation", href: "/contact-us" },
   },
   {
-    image: "/home1.jpg",
+    image: "/home1.webp",
     lines: [
       "Empowering You with Smart Accounting, Tax Solutions & Financial Clarity",
       " Tax Filing |  Audit & Assurance |  Business Advisory |  GST Compliance",
@@ -31,7 +32,7 @@ const slides = [
     cta: { label: "Book a Consultation", href: "/contact-us" },
   },
   {
-    image: "/home3.jpg",
+    image: "/home3.webp",
     heading: "Reliable Accounting, Tax Planning & Financial Advisory",
     lines: ["Chartered Accountants You Can Trust for Clarity & Compliance"],
     description:
@@ -62,57 +63,66 @@ export default function Hero() {
   const nextRef = useRef(null);
 
   return (
-    <>
-      <section className="relative hero w-full h-[110vh] overflow-hidden">
-        {/* Arrows */}
-        <div
-          ref={prevRef}
-          className="hidden md:flex group absolute top-1/2 left-4 z-20 transform -translate-y-1/2 cursor-pointer p-3 rounded-full bg-white/20 hover:bg-[#013B7A] transition"
-        >
-          <ChevronLeft className="w-6 h-6 text-white group-hover:text-black transition" />
-        </div>
-        <div
-          ref={nextRef}
-          className="hidden md:flex group absolute top-1/2 right-4 z-20 transform -translate-y-1/2 cursor-pointer p-3 rounded-full bg-white/20 hover:bg-[#013B7A] transition"
-        >
-          <ChevronRight className="w-6 h-6 text-white group-hover:text-black transition" />
-        </div>
+    <section className="relative hero w-full h-[110vh] overflow-hidden">
+      {/* Navigation Arrows */}
+      <div
+        ref={prevRef}
+        className="hidden md:flex group absolute top-1/2 left-4 z-30 transform -translate-y-1/2 cursor-pointer p-3 rounded-full bg-white/20 hover:bg-[#013B7A] transition"
+      >
+        <ChevronLeft className="w-6 h-6 text-white group-hover:text-black transition" />
+      </div>
+      <div
+        ref={nextRef}
+        className="hidden md:flex group absolute top-1/2 right-4 z-30 transform -translate-y-1/2 cursor-pointer p-3 rounded-full bg-white/20 hover:bg-[#013B7A] transition"
+      >
+        <ChevronRight className="w-6 h-6 text-white group-hover:text-black transition" />
+      </div>
 
-        {/* Swiper */}
-        <Swiper
-          modules={[Autoplay, EffectFade, Navigation]}
-          effect="fade"
-          loop
-          autoplay={{ delay: 6000, disableOnInteraction: false }}
-          navigation={{
-            prevEl: prevRef.current,
-            nextEl: nextRef.current,
-          }}
-          onBeforeInit={(swiper) => {
-            swiper.params.navigation.prevEl = prevRef.current;
-            swiper.params.navigation.nextEl = nextRef.current;
-          }}
-          onSlideChange={(swiper) => setActiveSlide(swiper.realIndex)}
-          className="w-full h-[40vh] md:h-full"
-        >
-          {slides.map((slide, idx) => (
-            <SwiperSlide key={idx}>
-              <div
-                className="w-full h-full bg-cover bg-center relative flex items-center justify-center px-4 sm:px-8"
-                style={{ backgroundImage: `url(${slide.image})` }}
-              >
-                <div className="absolute inset-0 bg-black/50 z-0" />
-                {activeSlide === idx && (
-                  <motion.div
-                    variants={container}
-                    initial="hidden"
-                    animate="show"
-                    className="relative text-white text-center max-w-[90%] sm:max-w-2xl md:max-w-3xl space-y-5"
-                  >
+      {/* Swiper Slider */}
+      <Swiper
+        modules={[Autoplay, EffectFade, Navigation]}
+        effect="fade"
+        loop
+        autoplay={{ delay: 6000, disableOnInteraction: false }}
+        navigation={{
+          prevEl: prevRef.current,
+          nextEl: nextRef.current,
+        }}
+        onBeforeInit={(swiper) => {
+          swiper.params.navigation.prevEl = prevRef.current;
+          swiper.params.navigation.nextEl = nextRef.current;
+        }}
+        onSlideChange={(swiper) => setActiveSlide(swiper.realIndex)}
+        className="w-full h-[40vh] md:h-full"
+      >
+        {slides.map((slide, idx) => (
+          <SwiperSlide key={idx}>
+            <div className="relative w-full h-[40vh] md:h-[110vh]">
+              {/* Optimized Background Image */}
+              <Image
+                src={slide.image}
+                alt={`Hero Slide ${idx + 1}`}
+                fill
+                priority={idx === 0}
+                sizes="100vw"
+                className="object-cover"
+              />
+              {/* Overlay */}
+              <div className="absolute inset-0 bg-black/50 z-10" />
+
+              {/* Content */}
+              {activeSlide === idx && (
+                <motion.div
+                  variants={container}
+                  initial="hidden"
+                  animate="show"
+                  className="absolute z-20 inset-0 flex items-center justify-center px-4 sm:px-8 text-center text-white"
+                >
+                  <div className="max-w-[90%] sm:max-w-2xl md:max-w-3xl space-y-5 mx-auto">
                     {/* Blue Bars */}
                     <motion.div
                       variants={item}
-                      className="flex flex-col z-100 items-center gap-1 mx-auto"
+                      className="flex flex-col items-center gap-1"
                     >
                       <div className="w-16 h-1 bg-[#2563EB]" />
                       <div className="w-10 h-1 bg-[#2563EB]" />
@@ -124,7 +134,7 @@ export default function Hero() {
                       className="text-xl sm:text-3xl md:text-5xl font-bold leading-normal"
                     >
                       {idx === 1 ? (
-                        <div className="inline-block z-100 text-[1.9rem] sm:text-5xl md:text-5xl font-bold max-w-[320px] sm:max-w-none mx-auto leading-snug">
+                        <div className="inline-block text-[1.9rem] sm:text-5xl md:text-5xl font-bold max-w-[320px] sm:max-w-none mx-auto leading-snug">
                           <div className="hidden md:inline-block">
                             <TypewriterEffectSmooth
                               words={typewriterWords}
@@ -156,13 +166,13 @@ export default function Hero() {
                     {slide.description && (
                       <motion.p
                         variants={item}
-                        className="text-sm sm:text-base md:text-lg font-normal text-muted px-2 sm:px-4 md:px-6 max-w-3xl mx-auto"
+                        className="text-sm sm:text-base md:text-lg font-normal text-gray-200 px-2 sm:px-4 md:px-6 max-w-3xl mx-auto"
                       >
                         {slide.description}
                       </motion.p>
                     )}
 
-                    {/* CTA */}
+                    {/* CTA Button */}
                     <motion.div variants={item}>
                       <Link href={slide.cta.href}>
                         <button className="mt-2 sm:mt-4 bg-[#004AAD] hover:bg-[#013B7A] transition-colors px-4 py-2 sm:px-6 sm:py-3 rounded font-semibold shadow-md text-sm sm:text-base">
@@ -170,13 +180,13 @@ export default function Hero() {
                         </button>
                       </Link>
                     </motion.div>
-                  </motion.div>
-                )}
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </section>
-    </>
+                  </div>
+                </motion.div>
+              )}
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </section>
   );
 }

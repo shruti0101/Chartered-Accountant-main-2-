@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import SectionTitle from "@/components/headcomponent/Sectiontitle";
-
+import Image from 'next/image';
 
 import BenefitsList from "@/components/headcomponent/Benefits";
 import ProcessSteps from "@/components/headcomponent/Process";
@@ -119,9 +119,16 @@ export default function StartupRegistration() {
               </li>
             </ul>
           </div>
-          <div>
-            <img src="/navservices/startupp.jpg" alt="Startup India" className="w-full mt-3 h-auto object-contain" loading="lazy" />
-          </div>
+         {/* IMAGE SECOND ON MOBILE, FIRST ON DESKTOP */}
+                 <div className="relative w-full h-[200px] md:h-[450px] order-1 md:order-2">
+                   <Image
+                     src="/navservices/startupp.webp"
+                     alt="GST registration process"
+                     fill
+                     className="rounded-xl object-contain"
+                     loading="lazy"
+                   />
+                 </div>
         </div>
       </div>
 

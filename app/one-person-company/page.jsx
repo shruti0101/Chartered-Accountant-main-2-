@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import SectionTitle from "@/components/headcomponent/Sectiontitle";
-
+import Image from 'next/image';
 
 import BenefitsList from "@/components/headcomponent/Benefits";
 import ProcessSteps from "@/components/headcomponent/Process";
@@ -279,7 +279,7 @@ const faqs = [
    
 
  {/* OPC Registration Info */}
-<div className="bg-white w-full py-10 px-4 md:px-10 lg:px-20">
+<div className="bg-white w-full md:py-10 px-4 md:px-10 lg:px-20">
   <div className="grid md:grid-cols-2 md:gap-10 items-center">
     <div>
       <h2 className="text-3xl mt-7 md:text-4xl font-extrabold text-[#1C398E] mb-4">
@@ -312,14 +312,15 @@ const faqs = [
       </ul>
     </div>
 
-    <div>
-      <img
-        src="/navservices/one-person.png"
-        alt="One Person Company Registration"
-        className="w-full mt-3 h-auto object-contain"
-        loading="lazy"
-      />
-    </div>
+     <div className="relative w-full h-[350px] md:h-[450px] order-1 md:order-2">
+                     <Image
+                       src="/navservices/one-person.webp"
+                       alt="one-person company"
+                       fill
+                       className="rounded-xl object-contain"
+                       loading="lazy"
+                     />
+                   </div>
   </div>
 </div>
 
@@ -374,9 +375,16 @@ const faqs = [
       <SectionTitle>Process for One Person Company Registration</SectionTitle>
       <ProcessSteps steps={steps} />
 
-       <div className=' p-3 md:p-10'>
-        <img  className=" mx-auto h-auto object-contain "src="/navservices/one-company-process.png" alt="private company process" />
-      </div>
+       <div className="w-full max-w-5xl mx-auto px-4 md:px-0">
+                     <Image
+                       src="/navservices/one-company-process.webp"
+                       alt="benefits-of-audit"
+                       width={800}
+                       height={500}
+                       className="mx-auto"
+                      
+                     />
+                   </div>
 
       <SectionTitle >Documents Required for One Person Company Registration</SectionTitle>
       <DocumentsRequired documents={documents} />

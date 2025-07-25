@@ -2,20 +2,33 @@
 
 import { useState } from "react";
 import {
-  FaCheckCircle, FaRegBuilding, FaShieldAlt, FaSearch, FaBug,
-  FaFileContract, FaUniversity, FaUserShield, FaKey,
-  FaBuilding, FaMapMarkedAlt ,FaSmile ,  FaStore, FaHandshake, FaClipboardList
+  FaCheckCircle,
+  FaRegBuilding,
+  FaShieldAlt,
+  FaSearch,
+  FaBug,
+  FaFileContract,
+  FaUniversity,
+  FaUserShield,
+  FaKey,
+  FaBuilding,
+  FaMapMarkedAlt,
+  FaSmile,
+  FaStore,
+  FaHandshake,
+  FaClipboardList,
 } from "react-icons/fa";
 
-import SectionTitle       from "@/components/headcomponent/Sectiontitle";
-import FormSection        from "@/components/headcomponent/Formsection";
-import BenefitsList       from "@/components/headcomponent/Benefits";
+import SectionTitle from "@/components/headcomponent/Sectiontitle";
+import FormSection from "@/components/headcomponent/Formsection";
+import BenefitsList from "@/components/headcomponent/Benefits";
 // import ProcessSteps       from "@/components/headcomponent/Process";
-import DocumentsRequired  from "@/components/headcomponent/Documents";
-import FAQSection         from "@/components/headcomponent/Faq";
-import Cta                from "@/components/Cta/Cta";
-import Setsapart          from "@/components/Setsapart/Setsapart";
-import Types              from "@/components/headcomponent/Types";
+import DocumentsRequired from "@/components/headcomponent/Documents";
+import FAQSection from "@/components/headcomponent/Faq";
+import Cta from "@/components/Cta/Cta";
+import Setsapart from "@/components/Setsapart/Setsapart";
+import Types from "@/components/headcomponent/Types";
+import Image from "next/image";
 
 export default function InternalAudit() {
   const [open, setOpen] = useState(null);
@@ -23,55 +36,127 @@ export default function InternalAudit() {
 
   /* ───────────── Benefits of Internal Audit ───────────── */
   const benefits = [
-    { title: "Stronger Internal Controls", description: "Identify control gaps, design remedial actions, and implement best‑practice frameworks that safeguard assets and data." },
-    { title: "Risk Mitigation",            description: "Early detection of fraud, policy breaches, and process risks saves you costly penalties and reputational damage." },
-    { title: "Operational Efficiency",     description: "Process mapping and bottleneck analysis lead to faster turnaround times and lower operating costs." },
-    { title: "Regulatory Readiness",       description: "Continuous monitoring keeps you ready for external audits—SEBI, RBI, ISO, and industry‑specific regulators." },
-    { title: "Data‑Driven Decisions",      description: "Audit analytics and KPI dashboards provide actionable insights for top management and the board." },
-    { title: "Independent Assurance",      description: "A third‑party CA firm offers objective reporting free from internal pressures or conflicts." },
+    {
+      title: "Stronger Internal Controls",
+      description:
+        "Identify control gaps, design remedial actions, and implement best‑practice frameworks that safeguard assets and data.",
+    },
+    {
+      title: "Risk Mitigation",
+      description:
+        "Early detection of fraud, policy breaches, and process risks saves you costly penalties and reputational damage.",
+    },
+    {
+      title: "Operational Efficiency",
+      description:
+        "Process mapping and bottleneck analysis lead to faster turnaround times and lower operating costs.",
+    },
+    {
+      title: "Regulatory Readiness",
+      description:
+        "Continuous monitoring keeps you ready for external audits—SEBI, RBI, ISO, and industry‑specific regulators.",
+    },
+    {
+      title: "Data‑Driven Decisions",
+      description:
+        "Audit analytics and KPI dashboards provide actionable insights for top management and the board.",
+    },
+    {
+      title: "Independent Assurance",
+      description:
+        "A third‑party CA firm offers objective reporting free from internal pressures or conflicts.",
+    },
   ];
 
   /* ───────────── Internal Audit Methodology ───────────── */
   const steps = [
-    { icon: FaClipboardList, subtitle: "Audit Universe & Planning", desc: "Define scope, risk universe, frequency, and resource allocation with senior management." },
-    { icon: FaUserShield,    subtitle: "Risk & Control Mapping",   desc: "Identify inherent risks, map existing controls, and set testing strategies." },
-    { icon: FaSearch,        subtitle: "Field Testing & Analytics",desc: "Perform walkthroughs, sample testing, data analytics, and root‑cause analysis." },
-    { icon: FaBug,           subtitle: "Issue Discussion",         desc: "Discuss preliminary findings with process owners to confirm facts and impact." },
-    { icon: FaFileContract,  subtitle: "Draft & Final Report",     desc: "Rate risks, recommend remediation, and present to audit committee/board." },
-    { icon: FaShieldAlt,     subtitle: "Follow‑up & Monitoring",   desc: "Track implementation of agreed actions and verify closure in subsequent cycles." },
+    {
+      icon: FaClipboardList,
+      subtitle: "Audit Universe & Planning",
+      desc: "Define scope, risk universe, frequency, and resource allocation with senior management.",
+    },
+    {
+      icon: FaUserShield,
+      subtitle: "Risk & Control Mapping",
+      desc: "Identify inherent risks, map existing controls, and set testing strategies.",
+    },
+    {
+      icon: FaSearch,
+      subtitle: "Field Testing & Analytics",
+      desc: "Perform walkthroughs, sample testing, data analytics, and root‑cause analysis.",
+    },
+    {
+      icon: FaBug,
+      subtitle: "Issue Discussion",
+      desc: "Discuss preliminary findings with process owners to confirm facts and impact.",
+    },
+    {
+      icon: FaFileContract,
+      subtitle: "Draft & Final Report",
+      desc: "Rate risks, recommend remediation, and present to audit committee/board.",
+    },
+    {
+      icon: FaShieldAlt,
+      subtitle: "Follow‑up & Monitoring",
+      desc: "Track implementation of agreed actions and verify closure in subsequent cycles.",
+    },
   ];
 
   /* ───────────── Documents / Data Required ───────────── */
   const documents = [
-    { icon: FaFileContract, title: "Process SOPs & Policies", desc: "Latest approved standard‑operating procedures and manuals." },
-    { icon: FaUniversity,   title: "Organisational Chart",    desc: "Department/functions hierarchy and key responsibilities." },
-    { icon: FaKey,          title: "System Access Matrix",    desc: "User roles, privileges, and segregation‑of‑duties listing." },
-    { icon: FaRegBuilding,  title: "Financial & Operational Data", desc: "Trial balance, ledgers, MIS reports, and KPI dashboards." },
-    { icon: FaMapMarkedAlt, title: "Previous Audit Reports",  desc: "Internal, external, or regulatory audit findings for follow‑up." },
-    { icon: FaShieldAlt,    title: "Compliance Filings",      desc: "GST, TDS, PF/ESIC, and industry‑specific licences/returns." },
+    {
+      icon: FaFileContract,
+      title: "Process SOPs & Policies",
+      desc: "Latest approved standard‑operating procedures and manuals.",
+    },
+    {
+      icon: FaUniversity,
+      title: "Organisational Chart",
+      desc: "Department/functions hierarchy and key responsibilities.",
+    },
+    {
+      icon: FaKey,
+      title: "System Access Matrix",
+      desc: "User roles, privileges, and segregation‑of‑duties listing.",
+    },
+    {
+      icon: FaRegBuilding,
+      title: "Financial & Operational Data",
+      desc: "Trial balance, ledgers, MIS reports, and KPI dashboards.",
+    },
+    {
+      icon: FaMapMarkedAlt,
+      title: "Previous Audit Reports",
+      desc: "Internal, external, or regulatory audit findings for follow‑up.",
+    },
+    {
+      icon: FaShieldAlt,
+      title: "Compliance Filings",
+      desc: "GST, TDS, PF/ESIC, and industry‑specific licences/returns.",
+    },
   ];
 
   /* ───────────── Frequently Asked Questions ───────────── */
   const faqs = [
     {
       q: "How often should internal audit be conducted?",
-      a: "Best‑practice recommends quarterly or half‑yearly cycles for high‑risk processes. The frequency depends on your industry, size, and risk appetite; we tailor a calendar to suit."
+      a: "Best‑practice recommends quarterly or half‑yearly cycles for high‑risk processes. The frequency depends on your industry, size, and risk appetite; we tailor a calendar to suit.",
     },
     {
       q: "Will the audit disrupt daily operations?",
-      a: "No. We use secure data portals and minimal in‑person walkthroughs. Fieldwork schedules are agreed in advance to avoid peak‑season workloads."
+      a: "No. We use secure data portals and minimal in‑person walkthroughs. Fieldwork schedules are agreed in advance to avoid peak‑season workloads.",
     },
     {
       q: "Do you use data analytics or only manual testing?",
-      a: "Both. Our proprietary scripts analyse 100 % of transactions for red flags, while targeted sampling covers process walk‑throughs and control design."
+      a: "Both. Our proprietary scripts analyse 100 % of transactions for red flags, while targeted sampling covers process walk‑throughs and control design.",
     },
     {
       q: "Can internal audit replace statutory audit?",
-      a: "Internal audit is a continuous assurance function and cannot legally replace statutory audit. However, an effective internal audit reduces statutory audit issues and timelines."
+      a: "Internal audit is a continuous assurance function and cannot legally replace statutory audit. However, an effective internal audit reduces statutory audit issues and timelines.",
     },
     {
       q: "What deliverables do we receive?",
-      a: "You get an executive summary, detailed issue log with risk ratings, root‑cause analysis, practical recommendations, and a follow‑up tracker for management action."
+      a: "You get an executive summary, detailed issue log with risk ratings, root‑cause analysis, practical recommendations, and a follow‑up tracker for management action.",
     },
   ];
 
@@ -79,19 +164,43 @@ export default function InternalAudit() {
   const heading = "Key Internal Audit Areas";
 
   const filingTypes = [
-    { icon: <FaRegBuilding className="text-white text-3xl" />, title: "Finance & Accounting",     subtitle: "Revenue, payables, treasury, controls" },
-    { icon: <FaBuilding     className="text-white text-3xl" />, title: "Procurement & Inventory", subtitle: "Purchase‑to‑pay, stock, logistics" },
-    { icon: <FaStore        className="text-white text-3xl" />, title: "Sales & Receivables",     subtitle: "Quote‑to‑cash, credit, incentives" },
-    { icon: <FaUniversity   className="text-white text-3xl" />, title: "HR & Payroll",            subtitle: "Recruit‑to‑retire, payroll compliance" },
-    { icon: <FaSmile        className="text-white text-3xl" />, title: "IT General Controls",     subtitle: "Access, change management, backups" },
-    { icon: <FaHandshake    className="text-white text-3xl" />, title: "Compliance & ESG",        subtitle: "Environmental, social & governance risk" },
+    {
+      icon: <FaRegBuilding className="text-white text-3xl" />,
+      title: "Finance & Accounting",
+      subtitle: "Revenue, payables, treasury, controls",
+    },
+    {
+      icon: <FaBuilding className="text-white text-3xl" />,
+      title: "Procurement & Inventory",
+      subtitle: "Purchase‑to‑pay, stock, logistics",
+    },
+    {
+      icon: <FaStore className="text-white text-3xl" />,
+      title: "Sales & Receivables",
+      subtitle: "Quote‑to‑cash, credit, incentives",
+    },
+    {
+      icon: <FaUniversity className="text-white text-3xl" />,
+      title: "HR & Payroll",
+      subtitle: "Recruit‑to‑retire, payroll compliance",
+    },
+    {
+      icon: <FaSmile className="text-white text-3xl" />,
+      title: "IT General Controls",
+      subtitle: "Access, change management, backups",
+    },
+    {
+      icon: <FaHandshake className="text-white text-3xl" />,
+      title: "Compliance & ESG",
+      subtitle: "Environmental, social & governance risk",
+    },
   ];
 
   /* ───────────── Render ───────────── */
   return (
     <>
       {/* Hero */}
-      <section>
+      <section className="pt-22">
         <div className="absolute inset-0 -z-10 h-auto md:min-h-[650px] bg-gradient-to-br from-blue-100 via-green-100 to-white" />
         <div className="container mx-auto px-4 py-12">
           <div className="flex flex-col lg:flex-row items-center gap-10">
@@ -105,8 +214,9 @@ export default function InternalAudit() {
                 independent and value‑driven internal audits.
               </p>
               <p className="text-lg text-gray-600 max-w-2xl">
-                Our CA‑led team combines deep domain knowledge, robust analytics,
-                and industry best practices to deliver actionable insights.
+                Our CA‑led team combines deep domain knowledge, robust
+                analytics, and industry best practices to deliver actionable
+                insights.
               </p>
             </div>
             <div className="flex-1 w-full max-w-xl">
@@ -134,23 +244,33 @@ export default function InternalAudit() {
             <ul className="space-y-3 text-gray-700">
               <li className="flex items-start gap-2">
                 <FaCheckCircle className="text-green-600 mt-1" />
-                <span><strong>Proactive Risk Management:</strong> Spot issues before they hurt your bottom line.</span>
+                <span>
+                  <strong>Proactive Risk Management:</strong> Spot issues before
+                  they hurt your bottom line.
+                </span>
               </li>
               <li className="flex items-start gap-2">
                 <FaCheckCircle className="text-green-600 mt-1" />
-                <span><strong>Process Optimisation:</strong> Identify inefficiencies and reduce cycle‑times.</span>
+                <span>
+                  <strong>Process Optimisation:</strong> Identify inefficiencies
+                  and reduce cycle‑times.
+                </span>
               </li>
               <li className="flex items-start gap-2">
                 <FaCheckCircle className="text-green-600 mt-1" />
-                <span><strong>Regulatory Assurance:</strong> Stay prepared for any external scrutiny.</span>
+                <span>
+                  <strong>Regulatory Assurance:</strong> Stay prepared for any
+                  external scrutiny.
+                </span>
               </li>
             </ul>
           </div>
-          <div>
-            <img
-              src="/navservices/Internal-Auditing.jpg"
-              alt="Internal audit illustration"
-              className="w-full h-auto object-contain rounded-md"
+          <div className="relative w-full h-[200px] md:h-[450px] order-1 md:order-2">
+            <Image
+              src="/navservices/Internal-Auditing.webp"
+              alt="Internal-Auditing"
+              fill
+              className="rounded-xl object-contain"
               loading="lazy"
             />
           </div>
@@ -167,60 +287,81 @@ export default function InternalAudit() {
       </section>
 
       {/* Process */}
-   <section className="bg-white py-16 px-6 md:px-12">
-      <div className="max-w-7xl mx-auto">
-        <h2 className="text-2xl md:text-3xl font-bold text-center mb-12 text-[#1C398E]">
-          Our Internal Audit Process Includes the Following Steps:
-        </h2>
+      <section className="bg-white py-16 px-6 md:px-12">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-12 text-[#1C398E]">
+            Our Internal Audit Process Includes the Following Steps:
+          </h2>
 
-        {/* 3 column grid layout: left text - center image - right text */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
-          {/* LEFT TEXT */}
-          <div className="space-y-10">
-            <div>
-              <h3 className="text-xl font-semibold text-[#131A46] uppercase mb-2">Follow-up</h3>
-              <p className="text-gray-700 text-base">
-                We ensure timely implementation of all audit recommendations. Follow-up is a key phase to confirm corrective actions have been taken and internal controls are functioning effectively post-audit.
-              </p>
+          {/* 3 column grid layout: left text - center image - right text */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
+            {/* LEFT TEXT */}
+            <div className="space-y-10">
+              <div>
+                <h3 className="text-xl font-semibold text-[#131A46] uppercase mb-2">
+                  Follow-up
+                </h3>
+                <p className="text-gray-700 text-base">
+                  We ensure timely implementation of all audit recommendations.
+                  Follow-up is a key phase to confirm corrective actions have
+                  been taken and internal controls are functioning effectively
+                  post-audit.
+                </p>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold text-[#131A46] uppercase mb-2">
+                  Reporting
+                </h3>
+                <p className="text-gray-700 text-base">
+                  A comprehensive audit report is prepared highlighting
+                  observations, control weaknesses, and actionable insights. Our
+                  reports are concise, easy to interpret, and customized to
+                  client expectations.
+                </p>
+              </div>
             </div>
-            <div>
-              <h3 className="text-xl font-semibold text-[#131A46] uppercase mb-2">Reporting</h3>
-              <p className="text-gray-700 text-base">
-                A comprehensive audit report is prepared highlighting observations, control weaknesses, and actionable insights. Our reports are concise, easy to interpret, and customized to client expectations.
-              </p>
-            </div>
-          </div>
 
-          {/* CENTER IMAGE */}
-          <div className="flex justify-center">
-            <img
-              src="/internal-audit-process.png"
-              alt="Internal Audit Cycle"
-              width={500}
-              height={500}
-              className="w-full max-w-sm mx-auto"
-            />
-          </div>
+            {/* CENTER IMAGE */}
+          
+                  <div className="w-full max-w-5xl mx-auto px-4 md:px-0">
+                    <Image
+                      src="/internal-audit-process.webp"
+                      alt="internal-audit-process"
+                      width={800}
+                      height={500}
+                      className="mx-auto"
+                     
+                    />
+                  </div>
 
-          {/* RIGHT TEXT */}
-          <div className="space-y-10">
-            <div>
-              <h3 className="text-xl font-semibold text-[#131A46] uppercase mb-2">Planning</h3>
-              <p className="text-gray-700 text-base">
-                We initiate with understanding the client's business environment, identifying key risk areas, and defining the scope. Our audit plan is structured to ensure thorough coverage and minimal disruption.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-xl font-semibold text-[#131A46] uppercase mb-2">Fieldwork</h3>
-              <p className="text-gray-700 text-base">
-                Our team conducts in-depth testing, document reviews, and interviews. This phase helps us gather solid evidence to assess internal controls and compliance with applicable policies and regulations.
-              </p>
+            {/* RIGHT TEXT */}
+            <div className="space-y-10">
+              <div>
+                <h3 className="text-xl font-semibold text-[#131A46] uppercase mb-2">
+                  Planning
+                </h3>
+                <p className="text-gray-700 text-base">
+                  We initiate with understanding the client's business
+                  environment, identifying key risk areas, and defining the
+                  scope. Our audit plan is structured to ensure thorough
+                  coverage and minimal disruption.
+                </p>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold text-[#131A46] uppercase mb-2">
+                  Fieldwork
+                </h3>
+                <p className="text-gray-700 text-base">
+                  Our team conducts in-depth testing, document reviews, and
+                  interviews. This phase helps us gather solid evidence to
+                  assess internal controls and compliance with applicable
+                  policies and regulations.
+                </p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-
+      </section>
 
       {/* Documents */}
       <SectionTitle>Documents & Information Required</SectionTitle>

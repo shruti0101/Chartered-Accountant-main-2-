@@ -12,7 +12,7 @@ import {
 import Cta from "@/components/Cta/Cta";
 
 
-
+import Image from "next/image";
 import {
   FaBuilding,
   FaFileInvoiceDollar,
@@ -234,8 +234,8 @@ export default function AboutSection() {
 
     {/* Image Side */}
     <div data-aos="fade-left" className="relative w-full max-w-md mx-auto lg:mx-0">
-      <img
-        src="/about.png"
+      <Image
+        src="/about.webp"
         alt="Chintan Agrawal CA"
         width={600}
         height={600}
@@ -328,8 +328,10 @@ export default function AboutSection() {
 
     {/* Image Section */}
     <div className="w-full lg:w-[40%] flex justify-center items-center">
-      <img
-        src="/blind1.png"
+      <Image
+      width={800}
+      height={600}
+        src="/blind1.webp"
         alt="Service Illustration"
         className="max-w-full h-auto object-contain mt-10"
       />

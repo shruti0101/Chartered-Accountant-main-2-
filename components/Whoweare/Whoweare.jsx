@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import lawyersImage from "@/public/whoweare.jpg";
+import lawyersImage from "@/public/whoweare.webp";
 import rocket from "@/public/rocket-image.png";
 import circle from "@/public/circle.png";
 const Whoweare = () => {

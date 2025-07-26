@@ -63,7 +63,7 @@ export default function Hero() {
   const nextRef = useRef(null);
 
   return (
-    <section className="relative hero w-full h-[110vh] overflow-hidden">
+    <section className="relative hero w-full  overflow-hidden">
       {/* Navigation Arrows */}
       <div
         ref={prevRef}
@@ -93,14 +93,14 @@ export default function Hero() {
           swiper.params.navigation.nextEl = nextRef.current;
         }}
         onSlideChange={(swiper) => setActiveSlide(swiper.realIndex)}
-        className="w-full h-[40vh] md:h-full"
+        className=""
       >
         {slides.map((slide, idx) => (
           <SwiperSlide key={idx}>
-            <div className="relative w-full h-[40vh] md:h-[110vh]">
+            <div className=" w-full h-[60vh] md:h-[110vh]">
               {/* Optimized Background Image */}
               <Image
-                src={slide.image}
+                src={slide.image }
                 alt={`Hero Slide ${idx + 1}`}
                 fill
                 priority={idx === 0}
@@ -108,7 +108,7 @@ export default function Hero() {
                 className="object-cover"
               />
               {/* Overlay */}
-              <div className="absolute inset-0 bg-black/50 z-10" />
+              <div className="absolute inset-0 bg-black/10 z-10" />
 
               {/* Content */}
               {activeSlide === idx && (
@@ -118,7 +118,7 @@ export default function Hero() {
                   animate="show"
                   className="absolute z-20 inset-0 flex items-center justify-center px-4 sm:px-8 text-center text-white"
                 >
-                  <div className="max-w-[90%] sm:max-w-2xl md:max-w-3xl space-y-5 mx-auto">
+                  <div className="max-w-[90%] sm:max-w-2xl md:max-w-3xl space-y-5 mt-20 md:mt-0 mx-auto">
                     {/* Blue Bars */}
                     <motion.div
                       variants={item}

@@ -272,7 +272,7 @@ export default function TransferPricingServices() {
             {/* right – image */}
             <div className="relative w-full h-[200px] md:h-[450px] order-1 md:order-2">
               <Image
-                src="/navservices/transfer-process.webp"
+                src="/navservices/Transfer-process.webp"
                 alt="GST registration process"
                 fill
                 className="rounded-xl object-contain"

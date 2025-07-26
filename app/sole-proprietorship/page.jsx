@@ -296,6 +296,18 @@ const tabs = [
       <SectionTitle>Process for Sole Proprietorship Registration</SectionTitle>
       <ProcessSteps steps={steps} />
 
+
+
+          <div className="w-full max-w-5xl mx-auto px-4 md:px-0">
+                <Image
+                  src="/navservices/sole-doc.webp"
+                  alt="benefits-of-audit"
+                  width={800}
+                  height={500}
+                  className="mx-auto"
+                 
+                />
+              </div>
   
 
       {/* FAQs */}

@@ -23,13 +23,13 @@ const serviceLinks = {
 
 /* Carousel data */
 const services = [
-  { title: "Taxation Related Services", image: "/services/tax.jpg" },
-  { title: "ROC Compliance", image: "/services/compliance.jpeg" },
-  { title: "Book Keeping and Accounting Services", image: "/services/book.jpg" },
+  { title: "Taxation Related Services", image: "/services/tax.webp" },
+  { title: "ROC Compliance", image: "/services/compliance.webp" },
+  { title: "Book Keeping and Accounting Services", image: "/services/book.webp" },
   { title: "International Taxation", image: "/services/fdi.webp" },
   { title: "Business Setup Solution", image: "/services/businessadvice.webp" },
-  { title: "GST Related Services", image: "/services/GSTFilling.jpg" },
-  { title: "Audit and Assurance Services", image: "/services/Audit-Assurance.jpg" },
+  { title: "GST Related Services", image: "/services/GSTFilling.webp" },
+  { title: "Audit and Assurance Services", image: "/services/Audit-Assurance.webp" },
 ];
 
 const ServicesCarousel = () => {

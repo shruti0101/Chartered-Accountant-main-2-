@@ -47,37 +47,42 @@ export default function PublicationsPage() {
         <p className="text-center text-gray-500">No publications found.</p>
       ) : (
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {publications.map((pub, index) => (
-            <div
-              key={pub._id}
-              className={`rounded-lg shadow-md hover:shadow-lg transition p-6 bg-[#001F61] text-white`}
-            >
-              <div className="flex justify-center mb-4">
-                <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow">
-                  <FaFilePdf className="text-3xl text-[#001F61]" />
+          {publications.map((pub) => {
+            // Wrap the file URL with Google Docs Viewer
+            const previewUrl = `https://docs.google.com/gview?url=${encodeURIComponent(pub.fileUrl)}&embedded=true`;
+
+            return (
+              <div
+                key={pub._id}
+                className={`rounded-lg shadow-md hover:shadow-lg transition p-6 bg-[#001F61] text-white`}
+              >
+                <div className="flex justify-center mb-4">
+                  <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow">
+                    <FaFilePdf className="text-3xl text-[#001F61]" />
+                  </div>
+                </div>
+
+                <h2 className="text-xl font-bold text-center mb-2">
+                  {pub.title}
+                </h2>
+
+                {pub.description && (
+                  <p className="text-center text-sm mb-4">{pub.description}</p>
+                )}
+
+                <div className="text-center">
+                  <a
+                    href={previewUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline hover:text-blue-300"
+                  >
+                    Know More
+                  </a>
                 </div>
               </div>
-
-              <h2 className="text-xl font-bold text-center mb-2">
-                {pub.title}
-              </h2>
-
-              {pub.description && (
-                <p className="text-center text-sm mb-4">{pub.description}</p>
-              )}
-
-              <div className="text-center">
-                <a
-                  href={pub.fileUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="your-button-class"
-                >
-                  Know More
-                </a>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       )}
     </div>

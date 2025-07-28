@@ -17,11 +17,11 @@ export async function POST(req) {
     const description = formData.get("description");
 
     if (!file || typeof file === "string" || !title || !description) {
-      return Response.json({ message: "Missing fields or invalid file" }, { status: 400 });
+      return new Response("Missing fields or invalid file", { status: 400 });
     }
 
     if (!file.type.includes("pdf")) {
-      return Response.json({ message: "Only PDF files are allowed" }, { status: 400 });
+      return new Response("Only PDF files are allowed", { status: 400 });
     }
 
     const bytes = await file.arrayBuffer();
@@ -42,13 +42,14 @@ export async function POST(req) {
       fileUrl: `/uploads/${filename}`,
     });
 
-    return Response.json(publication, { status: 201 }); // ✅ important to return Response.json
+    return new Response(JSON.stringify(publication), {
+      status: 201,
+    });
   } catch (error) {
     console.error("Upload error:", error);
-    return Response.json({ message: "Failed to upload PDF" }, { status: 500 });
+    return new Response("Failed to upload PDF", { status: 500 });
   }
 }
-
 
 // GET: Fetch all publications
 export async function GET() {

@@ -58,7 +58,9 @@ export default function PublicationsPage() {
                 </div>
               </div>
 
-              <h2 className="text-xl font-bold text-center mb-2">{pub.title}</h2>
+              <h2 className="text-xl font-bold text-center mb-2">
+                {pub.title}
+              </h2>
 
               {pub.description && (
                 <p className="text-center text-sm mb-4">{pub.description}</p>
@@ -69,9 +71,9 @@ export default function PublicationsPage() {
                   href={pub.fileUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block px-5 py-2 rounded border border-white text-white hover:bg-white hover:text-[#001F61] transition"
+                  className="your-button-class"
                 >
-                  Know More →
+                  Know More
                 </a>
               </div>
             </div>

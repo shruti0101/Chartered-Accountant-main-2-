@@ -1,12 +1,14 @@
+import { writeFile, mkdir } from "fs/promises";
+import path from "path";
 import { v4 as uuidv4 } from "uuid";
 import { connect } from "@/Database/Db";
 import Publication from "@/models/Publication";
-import cloudinary from "@/utils/cloudinary";
+import fs from "fs/promises";
 
-// Node.js runtime required for file buffer access
+// Use Node.js runtime to enable fs and file handling in Next.js App Router
 export const runtime = "nodejs";
 
-// 📤 POST: Upload PDF to Cloudinary
+// POST: Upload PDF
 export async function POST(req) {
   try {
     const formData = await req.formData();
@@ -22,27 +24,22 @@ export async function POST(req) {
       return new Response("Only PDF files are allowed", { status: 400 });
     }
 
-    // Convert file to base64 for Cloudinary
     const bytes = await file.arrayBuffer();
-    const base64 = Buffer.from(bytes).toString("base64");
-    const dataURI = `data:${file.type};base64,${base64}`;
+    const buffer = Buffer.from(bytes);
 
-    // Upload to Cloudinary
- const result = await cloudinary.uploader.upload(dataURI, {
-  resource_type: "raw", // ✅ FORCE raw, so PDFs are treated correctly
-  folder: "publications",
-  public_id: uuidv4(),
-  use_filename: true,
-  unique_filename: false,
-});
+    const filename = `${uuidv4()}-${file.name}`;
+    const dir = path.join(process.cwd(), "public", "uploads");
 
+    await mkdir(dir, { recursive: true });
+    const filePath = path.join(dir, filename);
+
+    await writeFile(filePath, buffer);
 
     await connect();
     const publication = await Publication.create({
       title,
       description,
-      fileUrl: result.secure_url,     // ✅ Cloudinary-hosted URL
-      cloudinaryId: result.public_id, // ✅ Save for future deletion
+      fileUrl: `/uploads/${filename}`,
     });
 
     return new Response(JSON.stringify(publication), {
@@ -54,7 +51,7 @@ export async function POST(req) {
   }
 }
 
-// 📄 GET: Fetch all publications
+// GET: Fetch all publications
 export async function GET() {
   try {
     await connect();
@@ -66,7 +63,7 @@ export async function GET() {
   }
 }
 
-// ❌ DELETE: Remove file from Cloudinary and DB
+// DELETE: Delete publication and PDF file
 export async function DELETE(req) {
   const { searchParams } = new URL(req.url);
   const id = searchParams.get("id");
@@ -77,20 +74,18 @@ export async function DELETE(req) {
 
   try {
     await connect();
+
     const publication = await Publication.findById(id);
     if (!publication) {
       return new Response("Publication not found", { status: 404 });
     }
 
-    // Delete file from Cloudinary (if stored)
-    if (publication.cloudinaryId) {
-      try {
-        await cloudinary.uploader.destroy(publication.cloudinaryId, {
-          resource_type: "raw",
-        });
-      } catch (cloudErr) {
-        console.warn("Cloudinary deletion failed:", cloudErr.message);
-      }
+    const filePath = path.join(process.cwd(), "public", publication.fileUrl);
+    try {
+      await fs.unlink(filePath);
+      console.log("Deleted file:", filePath);
+    } catch (err) {
+      console.warn("File not found or already deleted:", filePath);
     }
 
     await Publication.findByIdAndDelete(id);

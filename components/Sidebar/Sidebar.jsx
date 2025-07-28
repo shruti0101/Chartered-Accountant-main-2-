@@ -22,7 +22,7 @@ const Sidebar = () => {
 
   return (
     <div className="flex flex-col bg-slate-100">
-      <div className="w-28 sm:w-80 h-screen relative py-12 px-2 sm:px-0">
+      <div className="w-28 sm:w-80 h-screen relative py-25 px-2 sm:px-0">
         <div className="w-full sm:w-[80%] mx-auto mt-10 space-y-7">
           <Link
             href="/admin/addblog"

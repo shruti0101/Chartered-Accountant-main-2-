@@ -3,19 +3,13 @@ import Link from "next/link";
 import Image from "next/image";
 import lawyersImage from "@/public/whoweare.webp";
 import rocket from "@/public/rocket-image.png";
-import circle from "@/public/circle.png";
+import circle from "@/public/circle.jpg";
 const Whoweare = () => {
   return (
     <section className="bg-white pt-12 md:pt-15 pb-4">
-      
       <div className="  md:max-w-screen-xl mx-auto flex flex-col md:flex-row items-center px-6 md:px-10 gap-10">
-
-
- {/* Right Image */}
-        <div
-          className="order-2 md:order-1  md:w-1/2 flex justify-center relative"
-        
-        >
+        {/* Right Image */}
+        <div className="order-2 md:order-1  md:w-1/2 flex justify-center relative">
           <Image
             src={lawyersImage}
             alt="Who We Are"
@@ -26,7 +20,7 @@ const Whoweare = () => {
           <Image
             src={circle}
             alt="Who We Are"
-            className="hidden md:block  absolute round-circle right-0 -top-8 filter hue-rotate-[40deg] saturate-[700%]  "
+            className="hidden md:block  absolute round-circle rounded-full right-0 -top-8 filter hue-rotate-[40deg] saturate-[700%]  "
             style={{ width: "180px" }}
             priority
           />
@@ -40,10 +34,7 @@ const Whoweare = () => {
           />
         </div>
 
-
-
         {/* Left Content */}
-
 
         <div className=" order-1 md:order-2 md:w-1/2">
           <div className="border-l-4 border-sky-500 pl-4 mb-4">
@@ -75,44 +66,38 @@ const Whoweare = () => {
             <p className="text-black font-bold text-lg md:text-xl mb-3">
               Our Core Services Include:
             </p>
-          <ul className="text-[#0AA9F4] pl-5 capitalize text-md md:text-lg">
-             
+            <ul className="text-[#0AA9F4] pl-5 capitalize text-md md:text-lg">
+              <li> ➜ GST Advisory and Filing</li>
 
-              <li>  ➜ GST Advisory and Filing</li>
-            
-              <li>  ➜ Auditing & Compliance Solutions</li>
-              <li>  ➜ internation taxation</li>
-              <li>  ➜ book keeping and Accounting services </li>
-              <li>  ➜ business setup solution </li>
-              <li>  ➜ ROC related services</li>
+              <li> ➜ Auditing & Compliance Solutions</li>
+              <li> ➜ internation taxation</li>
+              <li> ➜ book keeping and Accounting services </li>
+              <li> ➜ business setup solution </li>
+              <li> ➜ ROC related services</li>
             </ul>
           </div>
 
           <div className="flex justify-center md:justify-start mt-2">
-
             <Link href="/contact-us">
-            
-            <button className="group relative inline-flex items-center overflow-hidden cursor-pointer rounded-full bg-sky-500 px-4 py-3 font-semibold text-white shadow-md transition-all duration-300 hover:bg-sky-600 hover:scale-105">
-              <span className="mr-1 mx-auto">Know More</span>
-              <svg
-                className="w-5 h-5 mx-auto transition-transform duration-300 transform group-hover:translate-x-1"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M5 12h14M12 5l7 7-7 7"
-                />
-              </svg>
-            </button>
+              <button className="group relative inline-flex items-center overflow-hidden cursor-pointer rounded-full bg-sky-500 px-4 py-3 font-semibold text-white shadow-md transition-all duration-300 hover:bg-sky-600 hover:scale-105">
+                <span className="mr-1 mx-auto">Know More</span>
+                <svg
+                  className="w-5 h-5 mx-auto transition-transform duration-300 transform group-hover:translate-x-1"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M5 12h14M12 5l7 7-7 7"
+                  />
+                </svg>
+              </button>
             </Link>
           </div>
         </div>
-
-       
       </div>
     </section>
   );

@@ -9,6 +9,7 @@ export const connect = async () => {
     const conn = await mongoose.connect(process.env.MONGO_URI, {
    
  
+      
     });
 
     isConnected = conn.connections[0].readyState === 1;

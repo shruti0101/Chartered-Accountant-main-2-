@@ -1,10 +1,9 @@
 import { NextResponse } from "next/server";
-import { writeFile } from "fs/promises";
-import path from "path";
-import { connect } from "@/Database/Db";
-const fs = require("fs");
-import Blog from "@/models/blog";
 
+import { connect } from "@/Database/Db";
+
+import Blog from "@/models/blog";
+import imagekit from "@/utils/imageKit";
 const loadDB = async () => {
   await connect();
 };
@@ -42,15 +41,8 @@ export async function DELETE(request) {
       return NextResponse.json({ error: "Blog not found" }, { status: 404 });
     }
 
-    // Properly resolve the image path
-    const imagePath = path.join(process.cwd(), "public", blog.image.replace(/^\/+/, "")); 
-
-    // Delete image if it exists
-    try {
-      await fs.promises.unlink(imagePath);
-      console.log(`Deleted image: ${imagePath}`);
-    } catch (err) {
-      console.warn("Image not found, skipping delete:", imagePath);
+    if (blog.fileId) {
+      await imagekit.deleteFile(blog.fileId);
     }
 
     await Blog.findByIdAndDelete(id);
@@ -61,6 +53,7 @@ export async function DELETE(request) {
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }
+
 
 
 // api endpoint for data updation
@@ -81,23 +74,32 @@ export async function PUT(request) {
 
     const image = formData.get("image");
     if (image && typeof image !== "string") {
-      // Handle new image upload
-      const timestamp = Date.now();
+      // Delete old image from ImageKit
+      if (blog.fileId) {
+        await imagekit.deleteFile(blog.fileId);
+      }
+
+      // Upload new image
       const arrayBuffer = await image.arrayBuffer();
       const buffer = Buffer.from(arrayBuffer);
-      const extension = image.name.split(".").pop();
-      const fileName = `${timestamp}.${extension}`;
-      const filePath = path.join(process.cwd(), "public", "blog", fileName);
 
-      await writeFile(filePath, buffer);
+      const uploadResponse = await imagekit.upload({
+        file: buffer,
+        fileName: `${Date.now()}-${image.name}`,
+        folder: "/blogs",
+      });
 
-      // Delete old image
-      const oldPath = path.join(process.cwd(), "public", blog.image.replace(/^\/+/, ""));
-      try {
-        await fs.promises.unlink(oldPath);
-      } catch {}
+      blog.image = imagekit.url({
+        path: uploadResponse.filePath,
+        transformation: [
+          { quality: "auto" },
+          { format: "webp" },
+          { width: "700" },
+          { height: "400" },
+        ],
+      });
 
-      blog.image = `/blog/${fileName}`;
+      blog.fileId = uploadResponse.fileId;
     }
 
     await blog.save();
@@ -108,6 +110,7 @@ export async function PUT(request) {
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }
+
 
 
 // api endpoint for uploading blog data
@@ -129,24 +132,29 @@ export async function POST(request) {
     const arrayBuffer = await image.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
 
-    // Build a safe file path
-    const originalName = image.name;
-    const extension = originalName.split(".").pop();
-    const fileName = `${timestamp}.${extension}`;
-    const uploadDir = path.join(process.cwd(), "public", "blog"); // Ensure folder exists
-    const filePath = path.join(uploadDir, fileName);
+    // Upload to ImageKit
+    const uploadedImage = await imagekit.upload({
+      file: buffer,
+      fileName: `${timestamp}-${image.name}`,
+      folder: "/blogs",
+    });
 
-    // Save file
-    await writeFile(filePath, buffer);
+    // Build transformed URL
+    const optimizedImageUrl = imagekit.url({
+      path: uploadedImage.filePath,
+      transformation: [
+        { quality: "auto" },
+        { format: "webp" },
+        { width: "700" },
+        { height: "400" },
+      ],
+    });
 
-    // Prepare image URL (for public access)
-    const imageUrl = `/blog/${fileName}`;
-
-    // Save blog entry to MongoDB
     const blogData = {
       title: formData.get("title"),
       description: formData.get("description"),
-      image: imageUrl,
+      image: optimizedImageUrl,
+      fileId: uploadedImage.fileId,
       date: new Date(timestamp),
     };
 
@@ -158,7 +166,7 @@ export async function POST(request) {
       blog: savedBlog,
     });
   } catch (err) {
-    console.error("Error uploading file:", err);
+    console.error("POST error:", err);
     return NextResponse.json(
       { success: false, message: err.message || "Server error" },
       { status: 500 }

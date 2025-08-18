@@ -25,7 +25,7 @@ import ProcessSteps from "@/components/headcomponent/Process";
 import DocumentsRequired from "@/components/headcomponent/Documents";
 import FAQSection from "@/components/headcomponent/Faq";
 import Cta from "@/components/Cta/Cta";
-import Setsapart from "@/components/Setsapart/Setsapart";
+
 import Types from "@/components/headcomponent/Types";
 import Image from "next/image";
 export default function TaxPlanningServices() {
@@ -238,8 +238,6 @@ export default function TaxPlanningServices() {
         </div>
       </section>
 
-      {/* What sets us apart */}
-      <Setsapart />
 
       {/* Why Plan With Us */}
       <div className="bg-white w-full py-12 px-4 md:px-10 lg:px-20">

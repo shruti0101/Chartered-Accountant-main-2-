@@ -9,7 +9,7 @@ import ProcessSteps from "@/components/headcomponent/Process";
 import DocumentsRequired from "@/components/headcomponent/Documents";
 import FAQSection from "@/components/headcomponent/Faq";
 import Cta from "@/components/Cta/Cta";
-import Setsapart from "@/components/Setsapart/Setsapart";
+
 import Image from "next/image";
 import {
   FaCheckCircle, FaCloud, FaChartLine, FaSyncAlt, FaIdCard,
@@ -91,7 +91,6 @@ export default function TallyQuickbooksServices() {
         </div>
       </section>
 
-      <Setsapart />
 
       {/* Platform Info */}
       <div className="bg-white w-full  px-4 md:px-10 lg:px-20">

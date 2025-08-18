@@ -25,7 +25,7 @@ import BenefitsList from "@/components/headcomponent/Benefits";
 import DocumentsRequired from "@/components/headcomponent/Documents";
 import FAQSection from "@/components/headcomponent/Faq";
 import Cta from "@/components/Cta/Cta";
-import Setsapart from "@/components/Setsapart/Setsapart";
+
 import Types from "@/components/headcomponent/Types";
 
 export default function DtaaAdvisory() {
@@ -215,7 +215,7 @@ export default function DtaaAdvisory() {
         </div>
       </section>
 
-      <Setsapart />
+   
 
       <div className="bg-white w-full py-12 px-4 md:px-10 lg:px-20">
         <div className="grid md:grid-cols-2 gap-10 items-center">

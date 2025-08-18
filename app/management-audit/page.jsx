@@ -14,7 +14,7 @@ import ProcessSteps       from "@/components/headcomponent/Process";
 import DocumentsRequired  from "@/components/headcomponent/Documents";
 import FAQSection         from "@/components/headcomponent/Faq";
 import Cta                from "@/components/Cta/Cta";
-import Setsapart          from "@/components/Setsapart/Setsapart";
+
 import Types              from "@/components/headcomponent/Types";
 
 export default function ManagementAudit() {
@@ -115,8 +115,7 @@ export default function ManagementAudit() {
         </div>
       </section>
 
-      {/* What sets us apart */}
-      <Setsapart />
+
 
       {/* Why Management Audit */}
       <div className="bg-white w-full py-8 md:py-0  px-4 md:px-10 lg:px-20">

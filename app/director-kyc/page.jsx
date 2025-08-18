@@ -22,7 +22,7 @@ import ProcessSteps from "@/components/headcomponent/Process";
 import DocumentsRequired from "@/components/headcomponent/Documents";
 import FAQSection from "@/components/headcomponent/Faq";
 import Cta from "@/components/Cta/Cta";
-import Setsapart from "@/components/Setsapart/Setsapart";
+
 import Image from "next/image";
 
 export default function DirectorKYC() {
@@ -207,8 +207,7 @@ export default function DirectorKYC() {
         </div>
       </section>
 
-      {/* What Sets Us Apart */}
-      <Setsapart />
+
 
       {/* Why KYC Section */}
       <section className="bg-white py-12 px-4 md:px-10 lg:px-20">

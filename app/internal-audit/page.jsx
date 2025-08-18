@@ -26,7 +26,7 @@ import BenefitsList from "@/components/headcomponent/Benefits";
 import DocumentsRequired from "@/components/headcomponent/Documents";
 import FAQSection from "@/components/headcomponent/Faq";
 import Cta from "@/components/Cta/Cta";
-import Setsapart from "@/components/Setsapart/Setsapart";
+
 import Types from "@/components/headcomponent/Types";
 import Image from "next/image";
 
@@ -226,8 +226,7 @@ export default function InternalAudit() {
         </div>
       </section>
 
-      {/* What sets us apart */}
-      <Setsapart />
+
 
       {/* Why Internal Audit */}
       <div className="bg-white w-full py-12 px-4 md:px-10 lg:px-20">

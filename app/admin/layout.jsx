@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Data } from "@/Data/Data";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import Link from "next/link";
+
 
 export default function Layout({ children }) {
   return (

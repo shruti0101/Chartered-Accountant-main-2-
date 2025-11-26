@@ -8,7 +8,7 @@ import "swiper/css/effect-fade";
 import "swiper/css/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { TypewriterEffectSmooth } from "../ui/typewriter-effect";
+
 import "../Herosection/Hero.css";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -22,16 +22,6 @@ const slides = [
     cta: { label: "Request Consultation", href: "/contact-us" },
   },
   {
-    image: "/home1.webp",
-    lines: [
-      "Empowering You with Smart Accounting, Tax Solutions & Financial Clarity",
-      " Tax Filing |  Audit & Assurance |  Business Advisory |  GST Compliance",
-    ],
-    description:
-      "We provide a comprehensive range of financial and tax services tailored for individuals, businesses, and corporations.",
-    cta: { label: "Book a Consultation", href: "/contact-us" },
-  },
-  {
     image: "/home3.webp",
     heading: "Reliable Accounting, Tax Planning & Financial Advisory",
     lines: ["Chartered Accountants You Can Trust for Clarity & Compliance"],
@@ -40,6 +30,7 @@ const slides = [
     cta: { label: "Contact With Us", href: "/contact-us" },
   },
 ];
+
 
 const container = {
   hidden: { opacity: 0 },
@@ -51,11 +42,7 @@ const item = {
   show: { opacity: 1, y: 0, transition: { duration: 0.8 } },
 };
 
-const typewriterWords = [
-  { text: "Trusted ", className: "text-white typed mr-1 font-bold" },
-  { text: "Financial ", className: "text-white typed mr-1 font-bold" },
-  { text: "Expertise", className: "text-[#2563EB] typed font-bold" },
-];
+
 
 export default function Hero() {
   const [activeSlide, setActiveSlide] = useState(0);
@@ -129,27 +116,12 @@ export default function Hero() {
                     </motion.div>
 
                     {/* Heading */}
-                    <motion.h1
-                      variants={item}
-                      className="text-xl sm:text-3xl md:text-5xl font-bold leading-normal"
-                    >
-                      {idx === 1 ? (
-                        <div className="inline-block text-[1.9rem] sm:text-5xl md:text-5xl font-bold max-w-[320px] sm:max-w-none mx-auto leading-snug">
-                          <div className="hidden md:inline-block">
-                            <TypewriterEffectSmooth
-                              words={typewriterWords}
-                              className="z-100"
-                              cursorClassName="inline-block"
-                            />
-                          </div>
-                          <div className="md:hidden text-white text-[1.7rem] font-bold">
-                            Trusted Financial Expertise
-                          </div>
-                        </div>
-                      ) : (
-                        slide.heading
-                      )}
-                    </motion.h1>
+                   <motion.h1
+  variants={item}
+  className="text-xl sm:text-3xl md:text-5xl font-bold leading-normal"
+>
+  {slide.heading}
+</motion.h1>
 
                     {/* Lines */}
                     {slide.lines.map((line, i) => (

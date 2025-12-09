@@ -9,6 +9,9 @@ import "swiper/css/navigation";
 import Link from "next/link";
 import Image from "next/image";
 
+
+
+
 import "../Herosection/Hero.css";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -31,7 +34,6 @@ const slides = [
   },
 ];
 
-
 const container = {
   hidden: { opacity: 0 },
   show: { opacity: 1, transition: { staggerChildren: 0.3 } },
@@ -41,8 +43,6 @@ const item = {
   hidden: { opacity: 0, y: 30 },
   show: { opacity: 1, y: 0, transition: { duration: 0.8 } },
 };
-
-
 
 export default function Hero() {
   const [activeSlide, setActiveSlide] = useState(0);
@@ -87,7 +87,7 @@ export default function Hero() {
             <div className=" w-full h-[60vh] md:h-[110vh]">
               {/* Optimized Background Image */}
               <Image
-                src={slide.image }
+                src={slide.image}
                 alt={`Hero Slide ${idx + 1}`}
                 fill
                 priority={idx === 0}
@@ -116,12 +116,13 @@ export default function Hero() {
                     </motion.div>
 
                     {/* Heading */}
-                   <motion.h1
-  variants={item}
-  className="text-xl sm:text-3xl md:text-5xl font-bold leading-normal"
->
-  {slide.heading}
-</motion.h1>
+
+                    <motion.h1
+                      variants={item}
+                      className="text-xl sm:text-3xl md:text-5xl font-bold leading-normal"
+                    >
+                      {slide.heading}
+                    </motion.h1>
 
                     {/* Lines */}
                     {slide.lines.map((line, i) => (
